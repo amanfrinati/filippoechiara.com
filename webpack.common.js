@@ -18,7 +18,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        test: /\.(woff|woff2|eot|ttf|otf|jpg)$/,
         use: ["file-loader"],
       },
     ],
@@ -27,14 +27,14 @@ module.exports = {
     new CleanWebpackPlugin(),
     new CopyPlugin({
       patterns: [
-        // { from: "src/assets/images", to: "images" },
+        { from: "src/assets/images", to: "images" },
         // { from: "src/assets/icons", to: "icons" },
         // { from: "src/assets/site.webmanifest", to: "site.webmanifest" },
         {
           from: "src/index.html",
           to: "index.html",
         },
-      ]
+      ],
     }),
   ],
   output: {
