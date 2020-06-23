@@ -4,3 +4,4 @@ import jQuery from "jquery";
 import "bootstrap";
 import "popper.js";
 // import "./scripts/skewed";
+import "./scripts/slider";
