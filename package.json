@@ -24,6 +24,7 @@
     "copy-webpack-plugin": "^6.0.1",
     "css-loader": "^3.5.3",
     "file-loader": "^6.0.0",
+    "prettier": "^2.0.5",
     "sass": "^1.26.7",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.2.1",
@@ -37,6 +38,7 @@
     "gsap": "^3.3.4",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "swiper": "^5.4.5"
   }
 }

@@ -1,10 +1,13 @@
 @import "~bootstrap";
+@import "~swiper/css/swiper.css";
 // @import "./skewed";
-@import "./slider";
+//@import "./slider";
+
+@import "fonts";
+@import "variables";
 
 body {
-  margin: 0;
-  padding: 0;
+  font-family: $mada, sans-serif;
 }
 
 section {
@@ -14,4 +17,44 @@ section {
 .logo-fullpage {
   margin: auto;
   width: 50%;
+}
+
+.swiper-container {
+  height: 100vh;
+
+  .swiper-scroll-container .swiper-wrapper .swiper-slide img {
+    height: 100vh;
+  }
+
+  .img-description-together {
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: $blue;
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: $blue;
+  }
+
+  .swiper-pagination-bullet-active-prev-prev,
+  .swiper-pagination-bullet-active-prev-prev,
+  .swiper-pagination-bullet-active-next,
+  .swiper-pagination-bullet-active-next-next {
+    background-color: $gray-10;
+  }
+}
+
+.quotes {
+  font-size: 1.5rem;
+  color: $gray-10;
+}
+
+.img-quotes {
+  height: 100vh;
 }
