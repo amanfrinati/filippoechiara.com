@@ -10,18 +10,17 @@ import Swiper from 'swiper';
 
 $(document).ready(function() {
   new Swiper('.swiper-container-descriptions', {
-    initialSlide: 1,
+    initialSlide: 2,
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
     },
     pagination: {
-      el: '.swiper-pagination',
-      dynamicBullets: true,
+      el: '.swiper-pagination'
     },
   });
 
-  new Swiper('.swiper-scroll-container', {
+  new Swiper('.swiper-scroll', {
     direction: 'vertical',
     slidesPerView: 'auto',
     freeMode: true,
