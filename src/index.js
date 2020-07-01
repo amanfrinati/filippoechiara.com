@@ -1,13 +1,15 @@
 import "./styles/style.scss";
 
-import $ from "jquery";
+window.jQuery = require('jquery');
+window.$ = window.jQuery;
+require("jquery-visible");
+
 import "bootstrap";
 import "popper.js";
 // import "./scripts/skewed";
 // import "./scripts/slider";
 
 import Swiper from 'swiper';
-
 $(document).ready(function() {
   new Swiper('.swiper-container-descriptions', {
     initialSlide: 2,
@@ -29,4 +31,10 @@ $(document).ready(function() {
     },
     mousewheel: true,
   })
+});
+
+$(window).scroll(function(event) {
+  if ($('.quotes p').visible(true)) {
+    $('.quotes p').addClass("fade-in");
+  }
 });
