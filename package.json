@@ -38,7 +38,9 @@
     "gsap": "^3.3.4",
     "jquery": "^3.5.1",
     "jquery-visible": "^1.2.0",
+    "jquery.countdown": "^1.2.8",
     "popper.js": "^1.16.1",
+    "rellax": "^1.12.1",
     "slick-carousel": "^1.8.1",
     "swiper": "^5.4.5"
   }
