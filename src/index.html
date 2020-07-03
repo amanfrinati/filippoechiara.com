@@ -151,10 +151,9 @@
       <img src="images/quotes_p.jpg"
            class="img-quotes rellax"
            alt="Selfie di Filippo e Chiara al Santuario della Madonna della Corona"
-           data-rellax-speed="2"
-           data-rellax-mobile-speed="2"
-           data-rellax-tablet-speed="2"
-           data-rellax-desktop-speed="2"
+           data-rellax-speed="-2"
+           data-rellax-min="-120"
+           data-rellax-max="120"
       >
     </section>
 
@@ -163,7 +162,24 @@
         <div class="container">
           <div class="row">
             <div class="col offset-md-2 col-md-8 offset-lg-3 col-lg-6">
-              <span id="countdown"></span>
+              <div id="clockdiv">
+                <div>
+                  <span class="days"></span>
+                  <div class="smalltext">Days</div>
+                </div>
+                <div>
+                  <span class="hours"></span>
+                  <div class="smalltext">Hours</div>
+                </div>
+                <div>
+                  <span class="minutes"></span>
+                  <div class="smalltext">Minutes</div>
+                </div>
+                <div>
+                  <span class="seconds"></span>
+                  <div class="smalltext">Seconds</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

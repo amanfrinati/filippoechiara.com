@@ -2336,11 +2336,6 @@ jquery-visible@^1.2.0:
   resolved "https://registry.yarnpkg.com/jquery-visible/-/jquery-visible-1.2.0.tgz#4839cac492f2e7f705fd06b1cde202b5da97c1e9"
   integrity sha1-SDnKxJLy5/cF/QaxzeICtdqXwek=
 
-jquery.countdown@^1.2.8:
-  version "1.2.8"
-  resolved "https://registry.yarnpkg.com/jquery.countdown/-/jquery.countdown-1.2.8.tgz#9a224de619ae527aeb4f4eb4a790a93dee0e6276"
-  integrity sha1-miJN5hmuUnrrT060p5CpPe4OYnY=
-
 jquery@^3.5.1:
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.5.1.tgz#d7b4d08e1bfdb86ad2f1a3d039ea17304717abb5"
