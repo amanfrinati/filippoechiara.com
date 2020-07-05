@@ -18,16 +18,23 @@ module.exports = {
         ],
       },
       {
-        test: /\.(woff|woff2|eot|ttf|otf|jpg)$/,
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: ["file-loader"],
       },
+      // {
+      //   test: /\.(png|jpe?g|gif)$/i,
+      //   loader: 'file-loader',
+      //   options: {
+      //     outputPath: 'assets/images',
+      //   },
+      // },
     ],
   },
   plugins: [
     new CleanWebpackPlugin(),
     new CopyPlugin({
       patterns: [
-        { from: "src/assets/images", to: "images" },
+        { from: "src/assets/images", to: "assets/images" },
         // { from: "src/assets/icons", to: "icons" },
         // { from: "src/assets/site.webmanifest", to: "site.webmanifest" },
         {
