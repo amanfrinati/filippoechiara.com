@@ -34,9 +34,9 @@ $(document).ready(function() {
     mousewheel: true,
   });
 
-  new Rellax(".rellax", {
-    center: true
-  });
+  // new Rellax(".rellax", {
+  //   center: true
+  // });
 });
 
 $(window).scroll(function(event) {
