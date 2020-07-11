@@ -41,7 +41,7 @@ $(document).ready(function() {
     const timeinterval = setInterval(updateClock, 1000);
   }
 
-  const deadline = 'October 9 2020 23:59:59 GMT+0200';
+  const deadline = 'October 10 2020 10:59:59 GMT+0200';
   initializeClock('clockdiv', deadline);
 });
 
