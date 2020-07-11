@@ -8,6 +8,7 @@
 
 body {
   font-family: $mada, sans-serif;
+  color: $blue;
 }
 
 section {
@@ -19,6 +20,10 @@ h1 {
   letter-spacing: 2.4px;
 }
 
+.logo-landing {
+  background-color: $blue;
+}
+
 .logo-fullpage {
   margin: auto;
   width: 50%;
@@ -26,6 +31,10 @@ h1 {
 
 .swiper-container {
   height: 100vh;
+
+  & .swiper-container {
+    height: calc(100vh - 50px);
+  }
 
   .swiper-slide {
     height: unset;
@@ -42,7 +51,7 @@ h1 {
 
   .description-img {
     width: 100vw;
-    height: 100vh;
+    height: calc(100vh - 50px);
     background-repeat: no-repeat;
     background-size: cover;
   }
@@ -78,8 +87,6 @@ h1 {
   .swiper-pagination-bullet {
     width: 12px;
     height: 12px;
-    background: white;
-    opacity: 0.5;
     border: solid 1px rgba(0,0,0,0.5);
   }
 
@@ -96,9 +103,22 @@ h1 {
 }
 
 .quotes {
-  background-color: $gray-10;
   font-size: 1.5rem;
-  color: $blue;
+}
+
+.madonna-corona {
+  background-image: url("../assets/images/quotes_p.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.final-photo {
+  background-image: url("../assets/images/foto_finale_p_2x.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  min-height: unset;
 }
 
 .fade-in {
@@ -138,9 +158,22 @@ h1 {
   }
 }
 
-.cerimonia h1 {
-  padding: 4rem 0;
+.cerimonia,
+.motivational,
+.wedding-list {
+  b {
+    font-weight: 500;
+  }
+
+  strong {
+    font-weight: 700;
+  }
+
+  h1, .h1 {
+    padding: 4rem 0;
+  }
 }
+
 
 .hero-cerimonia {
   position: relative;
@@ -159,4 +192,5 @@ h1 {
 #clockdiv {
   font-size: 2rem;
   font-weight: 700;
+  letter-spacing: 2.4px;
 }
