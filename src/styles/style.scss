@@ -29,7 +29,7 @@ h1 {
   width: 50%;
 }
 
-.swiper-container {
+.swiper-container.swiper-container-descriptions {
   height: 100vh;
 
   & .swiper-container {
@@ -166,6 +166,12 @@ h1 {
   }
 }
 
+// Celebration
+
+.celebration-logo {
+  max-width: 70vw;
+  padding: 5rem 0;
+}
 
 .hero-cerimonia {
   position: relative;
@@ -186,6 +192,52 @@ h1 {
   font-weight: 700;
   letter-spacing: 2.4px;
 }
+
+// Party
+
+.swiper-container.party {
+  height: 50vh;
+
+  .swiper-slide-party {
+    width: 100vw;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    &.party-slide-1 {
+      background-image: url('../assets/images/party/1.jpg');
+    }
+    &.party-slide-2 {
+      background-image: url('../assets/images/party/2.jpg');
+    }
+    &.party-slide-3 {
+      background-image: url('../assets/images/party/3.jpg');
+    }
+    &.party-slide-4 {
+      background-image: url('../assets/images/party/4.jpg');
+    }
+    &.party-slide-5 {
+      background-image: url('../assets/images/party/5.jpg');
+    }
+    &.party-slide-6 {
+      background-image: url('../assets/images/party/6.jpg');
+    }
+    &.party-slide-7 {
+      background-image: url('../assets/images/party/7.jpg');
+    }
+    &.party-slide-8 {
+      background-image: url('../assets/images/party/8.jpg');
+    }
+    &.party-slide-9 {
+      background-image: url('../assets/images/party/9.jpg');
+    }
+    &.party-slide-10 {
+      background-image: url('../assets/images/party/10.jpg');
+    }
+
+  }
+}
+
 
 // Final Section
 
