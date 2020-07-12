@@ -113,14 +113,6 @@ h1 {
   height: 100vh;
 }
 
-.final-photo {
-  background-image: url("../assets/images/foto_finale_p_2x.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
-  min-height: unset;
-}
-
 .fade-in {
   animation: fadein 1s cubic-bezier(0.4, 0, 1, 1);
 }
@@ -193,4 +185,34 @@ h1 {
   font-size: 2rem;
   font-weight: 700;
   letter-spacing: 2.4px;
+}
+
+// Final Section
+
+.final-section {
+  min-height: unset;
+  height: 100vh;
+  background-image: url("../assets/images/foto_finale_p_2x.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .content {
+    position: relative;
+    height: 100%;
+
+    .bg {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      opacity: 0;
+      background-color: $blue;
+    }
+
+    .phrase {
+      opacity: 0;
+      font-size: 1.5rem;
+      color: white;
+    }
+  }
 }
