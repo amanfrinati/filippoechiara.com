@@ -238,6 +238,33 @@ h1 {
   }
 }
 
+// Wedding List
+
+.swiper-container.wedding-list {
+  width: 100%;
+  height: auto;
+
+  .swiper-slide-item .card {
+    height: 85%;
+    margin: 0 10vw;
+    border: none;
+  }
+
+  .wedding-list-item-title {
+    background-color: $blue;
+    color: white;
+
+    h6 {
+      font-size: 1.4rem;
+      letter-spacing: 3px;
+      font-weight: 700;
+    }
+
+    &.wedding-list-item-completed {
+      background-color: $gray-50;
+    }
+  }
+}
 
 // Final Section
 

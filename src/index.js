@@ -10,6 +10,7 @@ import "popper.js";
 // import "./scripts/slider";
 import "./scripts/countdown";
 import "./scripts/gaspAnimations";
+import "./scripts/weddingList";
 import Swiper from 'swiper';
 import Rellax from "rellax";
 
