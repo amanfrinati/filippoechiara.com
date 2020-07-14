@@ -23,7 +23,8 @@ $(document).ready(function() {
       slidesPerView: 1,
       loop: true,
       utoHeight: true,
-      // freeMode: true,
+      freeMode: true,
+      lazy: true,
       // navigation: {
       //   nextEl: '.swiper-button-next',
       //   prevEl: '.swiper-button-prev',
@@ -48,7 +49,9 @@ $(document).ready(function() {
       swiperWeddingList.appendSlide(`
         <div class="swiper-slide swiper-slide-item">
           <div class="card">
-            <img src="${item.imageSrc || 'https://via.placeholder.com/400.png?text=Image'}" class="card-img-top my-3" alt="placeholder">
+            <div class="d-flex justify-content-center my-3">
+              <img src="${item.imageSrc || 'https://via.placeholder.com/400.png?text=Image'}" class="card-img-top swiper-lazy" alt="placeholder">
+            </div>
             <div class="card-body">
               <div class="wedding-list-item-title">
                 <h6 class="text-center text-uppercase">${item.name}</h6>
@@ -80,7 +83,7 @@ $(document).ready(function() {
                 </button>
               </div>
               <div class="modal-body">
-                <img src="${item.imageSrc || 'https://via.placeholder.com/400.png?text=Image'}" class="rounded float-center mw-100">
+                <img src="${item.imageSrc || 'https://via.placeholder.com/400.png?text=Image'}" class="rounded float-center mw-100" alt="${item.name}">
                 <p>${item.description}</p>
               </div>
             </div>
