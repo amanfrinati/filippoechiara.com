@@ -8,7 +8,8 @@
 
 body {
   font-family: $mada, sans-serif;
-  color: $blue;
+  background-color: $blue;
+  color: white;
 }
 
 section {
@@ -18,6 +19,15 @@ section {
 h1 {
   color: $blue;
   letter-spacing: 2.4px;
+}
+
+h2 {
+  font-size: 3rem;
+  letter-spacing: 3px;
+}
+
+p {
+  line-height: 1.35 !important;
 }
 
 .logo-landing {
@@ -31,6 +41,12 @@ h1 {
 
 .swiper-container.swiper-container-descriptions {
   height: 100vh;
+
+  p {
+    line-height: 1.2;
+    font-size: 1.45rem;
+    padding-bottom: 2rem;
+  }
 
   & .swiper-container {
     height: calc(100vh - 50px);
@@ -103,7 +119,16 @@ h1 {
 }
 
 .quotes {
-  font-size: 1.5rem;
+  line-height: 1.2;
+  font-size: 1.45rem;
+
+  p {
+    letter-spacing: 4px;
+
+    &:first-child {
+      text-transform: uppercase;
+    }
+  }
 }
 
 .madonna-corona {
@@ -135,7 +160,7 @@ h1 {
     background-color: #fff;
     height: 102%;
     position: absolute;
-    width: 33vw;
+    width: 45vw;
     will-change: transform;
   }
 
@@ -168,6 +193,10 @@ h1 {
 
 // Celebration
 
+.cerimonia {
+  background-color: $gray-10;
+}
+
 .celebration-logo {
   max-width: 70vw;
   padding: 5rem 0;
@@ -176,13 +205,17 @@ h1 {
 .hero-cerimonia {
   position: relative;
   overflow: hidden;
+
+  .border-left, .border-right {
+    background-color: $gray-10;
+  }
 }
 
 .eremitani-img {
   background-image: url("../assets/images/Padova_Chiesa_degli_Eremitani_Innen_Langhaus_Ost_1_2x.jpg");
   background-repeat: no-repeat;
   background-size: contain;
-  transform: scale(2);
+  transform: scale(3);
   will-change: transform;
   height: 40vh;
 }
@@ -191,6 +224,12 @@ h1 {
   font-size: 2rem;
   font-weight: 700;
   letter-spacing: 2.4px;
+  color: white;
+
+  .col-12 {
+    background-color: $blue;
+    padding: 4rem 0;
+  }
 }
 
 // Party
@@ -240,34 +279,56 @@ h1 {
 
 // Wedding List
 
-.swiper-container.wedding-list {
-  width: 100%;
-  height: auto;
-
-  .swiper-slide-item .card {
-    height: 85%;
-    margin: 0 10vw;
-    border: none;
-
-    img {
-      height: 300px;
-      width: auto;
-    }
+.wedding-list {
+  p {
+    font-size: 1.35rem;
+    line-height: 1.35;
   }
 
-  .wedding-list-item-title {
-    background-color: $blue;
-    color: white;
+  .swiper-container {
+    width: 100%;
+    height: auto;
 
-    h6 {
-      font-size: 1.4rem;
-      letter-spacing: 3px;
-      font-weight: 700;
+    .swiper-slide-item .card {
+      height: 85%;
+      margin: 0 10vw;
+      border: none;
+
+      img {
+        height: 300px;
+        width: auto;
+      }
     }
 
-    &.wedding-list-item-completed {
-      background-color: $gray-50;
+    .wedding-list-item-price {
+      color: $blue;
     }
+
+    .wedding-list-item-title {
+      background-color: $blue;
+      color: white;
+
+      h6 {
+        font-size: 1.4rem;
+        letter-spacing: 3px;
+        font-weight: 700;
+      }
+
+      &.wedding-list-item-completed {
+        background-color: $gray-10;
+      }
+    }
+  }
+}
+
+.honey-moon {
+  h2 {
+    font-size: 2.5rem;
+  }
+
+  p {
+    font-size: 1.35rem;
+    line-height: 1.35;
   }
 }
 
@@ -295,8 +356,11 @@ h1 {
 
     .phrase {
       opacity: 0;
-      font-size: 1.5rem;
+      font-size: 1.35rem;
+      line-height: 4px;
       color: white;
+      font-weight: 500;
+      padding-top: 15rem;
     }
   }
 }

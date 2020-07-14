@@ -19,7 +19,7 @@ $(document).ready(function() {
   firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
   db.collection("items").get().then(querySnapshot => {
-    const swiperWeddingList = new Swiper('.swiper-container.wedding-list', {
+    const swiperWeddingList = new Swiper('#weddingList', {
       slidesPerView: 1,
       loop: true,
       utoHeight: true,
@@ -43,6 +43,7 @@ $(document).ready(function() {
      * name
      * paid
      * totalAmount
+     * category
      */
     querySnapshot.forEach(doc => {
       const item = doc.data();
@@ -56,12 +57,11 @@ $(document).ready(function() {
               <div class="wedding-list-item-title">
                 <h6 class="text-center text-uppercase">${item.name}</h6>
               </div>
-              <div class="${ item.totalAmount - item.paid <= 0 ? 'd-none' : '' }">
-                <p class="text-center"><strong>${item.paid}/${item.totalAmount} €</strong>
-                  <button type="button" class="btn btn-link" data-toggle="modal" data-target="#item-${doc.id}">
-                    Regala!
-                  </button>
-                </p>
+              <div class="${ item.totalAmount - item.paid <= 0 ? 'd-none' : 'wedding-list-item-price' }">
+                <p class="text-center"><strong>${item.paid}/${item.totalAmount} €</strong></p>
+                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#item-${doc.id}">
+                  Regala!
+                </button>
               </div>
               <div class="${ item.totalAmount - item.paid <= 0 ? '' : 'd-none' }">
                 <div class="wedding-list-item-title wedding-list-item-completed">
@@ -91,8 +91,6 @@ $(document).ready(function() {
         </div>`);
     })
   });
-
-  ;
 
   // const vueApp = new Vue({
   //   el: '#weddingList',
