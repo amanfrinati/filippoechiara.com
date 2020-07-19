@@ -39,7 +39,7 @@ $(document).ready(function() {
       ease: "none",
       scrollTrigger: {
         trigger: '.final-section',
-        start: 'top+=20% center',
+        start: 'top center',
         end: "center center",
         scrub: true
       },
@@ -52,7 +52,7 @@ $(document).ready(function() {
       ease: "none",
       scrollTrigger: {
         trigger: '.final-section',
-        start: 'top+=20% center',
+        start: 'top center',
         end: "center center",
         scrub: true
       },
