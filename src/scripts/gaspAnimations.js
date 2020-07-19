@@ -6,6 +6,18 @@ gasp.registerPlugin(ScrollTrigger);
 // gsap.registerPlugin(DrawSVGPlugin);
 
 $(document).ready(function() {
+  gasp.to('.sticky-container .sticky-content .madonna-corona',
+    {
+      opacity: 1,
+      duration: 1,
+      scrollTrigger: {
+        trigger: '.sticky-container .section-content',
+        start: 'bottom center',
+        end: "+=100%",
+        scrub: true
+      },
+    });
+
   gasp.to('.eremitani-img',
     {
       scale: 1,

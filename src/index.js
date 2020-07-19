@@ -58,11 +58,11 @@ $(document).ready(function() {
   // });
 });
 
-$(window).scroll(function(event) {
-  if ($('.quotes p').visible(true)) {
-    $('.quotes p').addClass("fade-in");
-  }
-});
+// $(window).scroll(function(event) {
+//   if ($('.quotes p').visible(true)) {
+//     $('.quotes p').addClass("fade-in");
+//   }
+// });
 
 let saveTheDateTyped = false;
 $(window).scroll(function(event) {
@@ -78,8 +78,12 @@ $(window).scroll(function(event) {
       .typeString('Sabato <strong>10</strong><br>')
       .pauseFor(400)
       .typeString('Ottobre <strong>2020</strong><br>')
+      .pauseFor(300)
+      .typeString('ore <strong>11.00</strong><br>')
       .pauseFor(400)
-      .typeString('ore <strong>11.00</strong>')
+      .typeString('Chiesa dei Santi Filippo e Giacomo<br>')
+      .pauseFor(200)
+      .typeString('piazza Eremitani 9, Padova')
       .start();
   }
 });

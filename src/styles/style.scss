@@ -123,23 +123,47 @@ p {
   }
 }
 
-.quotes {
-  p {
-    letter-spacing: 4px;
-    font-size: 1.45rem;
+.sticky-container {
+  height: 275vh;
+  margin-top: -100vh;
 
-    &:first-child {
-      text-transform: uppercase;
-    }
+  .sticky-content {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+  }
+
+  .section-content {
+    padding-top: 40vh;
   }
 }
 
-.madonna-corona {
-  background-image: url("../assets/images/quotes_p.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
+.quotes {
+  min-height: unset;
+  height: 275vh;
+
+  .section-content {
+    p {
+      letter-spacing: 4px;
+      font-size: 1.45rem;
+
+      &:first-child {
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .madonna-corona {
+    background-image: url("../assets/images/quotes_p.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    will-change: opacity;
+  }
 }
+
 
 .fade-in {
   animation: fadein 1s cubic-bezier(0.4, 0, 1, 1);
