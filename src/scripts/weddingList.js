@@ -5,6 +5,13 @@ import Swiper from "swiper";
 const firebase = require("firebase/app");
 require("firebase/firestore");
 
+function toCamelCase(string) {
+  string = string.toLowerCase().replace(/(?:(^.)|([-_\s]+.))/g, function(match) {
+      return match.charAt(match.length-1).toUpperCase();
+  });
+  return string.charAt(0).toLowerCase() + string.substring(1);
+}
+
 $(document).ready(function() {
   const firebaseConfig = {
     apiKey: "AIzaSyBPD4PuXZGxSOe2KrRdc7iQ45yQ1ni96WM",
@@ -21,8 +28,8 @@ $(document).ready(function() {
   db.collection("items").get().then(querySnapshot => {
     const swiperWeddingList = new Swiper('#weddingList', {
       slidesPerView: 1,
-      loop: true,
-      utoHeight: true,
+      // loop: true,
+      // autoHeight: true,
       freeMode: true,
       lazy: true,
       // navigation: {
@@ -50,7 +57,7 @@ $(document).ready(function() {
       swiperWeddingList.appendSlide(`
         <div class="swiper-slide swiper-slide-item">
           <div class="card">
-            <div class="d-flex justify-content-center my-3">
+            <div class="wedding-list-item-image">
               <img src="${item.imageSrc || 'https://via.placeholder.com/400.png?text=Image'}" class="card-img-top swiper-lazy" alt="placeholder">
             </div>
             <div class="card-body">
@@ -59,7 +66,7 @@ $(document).ready(function() {
               </div>
               <div class="${ item.totalAmount - item.paid <= 0 ? 'd-none' : 'wedding-list-item-price' }">
                 <p class="text-center"><strong>${item.paid}/${item.totalAmount} €</strong></p>
-                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#item-${doc.id}">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#item-${toCamelCase(doc.id)}">
                   Regala!
                 </button>
               </div>
@@ -73,7 +80,7 @@ $(document).ready(function() {
         </div>`);
 
       $('body').append(`
-        <div class="modal fade" id="item-${doc.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="item-${toCamelCase(doc.id)}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">

@@ -42,6 +42,6 @@ $(document).ready(function() {
   }
 
   const deadline = 'October 10 2020 10:59:59 GMT+0200';
-  initializeClock('clockdiv', deadline);
+  initializeClock('countdown-container', deadline);
 });
 

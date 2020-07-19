@@ -27,7 +27,7 @@ h2 {
 }
 
 p {
-  line-height: 1.35 !important;
+  line-height: 1.35;
 }
 
 .logo-landing {
@@ -43,7 +43,6 @@ p {
   height: 100vh;
 
   p {
-    line-height: 1.2;
     font-size: 1.45rem;
     padding-bottom: 2rem;
   }
@@ -103,27 +102,26 @@ p {
   .swiper-pagination-bullet {
     width: 12px;
     height: 12px;
-    border: solid 1px rgba(0,0,0,0.5);
+    //border: solid 1px rgba(0,0,0,0.5);
   }
 
   .swiper-pagination-bullet-active {
-    background-color: $blue;
+    background-color: white;
   }
 
   .swiper-pagination-bullet-active-prev-prev,
-  .swiper-pagination-bullet-active-prev-prev,
+  .swiper-pagination-bullet-active-prev,
   .swiper-pagination-bullet-active-next,
   .swiper-pagination-bullet-active-next-next {
-    background-color: $gray-10;
+    background-color: white;
+    opacity: 0.9;
   }
 }
 
 .quotes {
-  line-height: 1.2;
-  font-size: 1.45rem;
-
   p {
     letter-spacing: 4px;
+    font-size: 1.45rem;
 
     &:first-child {
       text-transform: uppercase;
@@ -175,7 +173,7 @@ p {
   }
 }
 
-.cerimonia,
+.celebration,
 .motivational,
 .wedding-list {
   b {
@@ -193,40 +191,51 @@ p {
 
 // Celebration
 
-.cerimonia {
+.celebration {
   background-color: $gray-10;
-}
 
-.celebration-logo {
-  max-width: 70vw;
-  padding: 5rem 0;
-}
-
-.hero-cerimonia {
-  position: relative;
-  overflow: hidden;
-
-  .border-left, .border-right {
-    background-color: $gray-10;
+  p {
+    font-size: 1.45rem;
   }
-}
 
-.eremitani-img {
-  background-image: url("../assets/images/Padova_Chiesa_degli_Eremitani_Innen_Langhaus_Ost_1_2x.jpg");
-  background-repeat: no-repeat;
-  background-size: contain;
-  transform: scale(3);
-  will-change: transform;
-  height: 40vh;
-}
+  .chiara-and-filippo {
+    padding: 6rem 2rem;
+  }
 
-#clockdiv {
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 2.4px;
-  color: white;
+  .celebration-logo {
+    max-width: 70vw;
+    padding: 5rem 0;
+  }
 
-  .col-12 {
+  .hero-cerimonia {
+    position: relative;
+    overflow: hidden;
+
+    .border-left, .border-right {
+      background-color: $gray-10;
+    }
+  }
+
+  .eremitani-img {
+    background-image: url("../assets/images/Padova_Chiesa_degli_Eremitani_Innen_Langhaus_Ost_1_2x.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    transform: scale(3);
+    will-change: transform;
+    height: 33vh;
+  }
+
+  #save-the-date, .save-the-date {
+    padding: 3rem 0;
+    text-align: center;
+    font-size: 2rem;
+    line-height: 2;
+  }
+
+  #countdown-container {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 2.4px;
     background-color: $blue;
     padding: 4rem 0;
   }
@@ -282,36 +291,61 @@ p {
 .wedding-list {
   p {
     font-size: 1.35rem;
-    line-height: 1.35;
   }
 
   .swiper-container {
     width: 100%;
-    height: auto;
+    height: 550px;
 
     .swiper-slide-item .card {
-      height: 85%;
+      height: 500px;
       margin: 0 10vw;
       border: none;
+    }
+
+    .wedding-list-item-image {
+      position: relative;
+      width: 100%;
+      height: 300px;
 
       img {
+        width: 100%;
+        object-fit: contain;
         height: 300px;
-        width: auto;
+        padding: 0.5rem 1.25rem;
       }
     }
 
     .wedding-list-item-price {
       color: $blue;
+      display: flex;
+      flex-direction: column;
+
+      p {
+        margin: 0.5rem 0;
+      }
+
+      .btn-primary {
+        background-color: $blue;
+        border-color: $blue;
+        border-radius: 0;
+      }
     }
 
     .wedding-list-item-title {
       background-color: $blue;
       color: white;
+      height: 75px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0.25rem;
 
       h6 {
         font-size: 1.4rem;
         letter-spacing: 3px;
         font-weight: 700;
+        margin: 0;
       }
 
       &.wedding-list-item-completed {
@@ -328,7 +362,6 @@ p {
 
   p {
     font-size: 1.35rem;
-    line-height: 1.35;
   }
 }
 

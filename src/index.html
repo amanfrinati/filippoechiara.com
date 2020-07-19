@@ -158,15 +158,18 @@
         ></div>
       </section>
 
-      <section class="cerimonia">
+      <section class="celebration">
+        <div class="chiara-and-filippo">
+          <img src="images/chiara_and_filippo.svg"
+               alt="Chiara Bonaldo and Filippo De Nes"/>
+        </div>
         <div class="container">
           <div class="row">
-            <div class="col offset-md-2 col-md-8 offset-lg-3 col-lg-6 text-center">
-              <p class="text-center">Annunciano con gioia il loro matrimonio</p>
+            <div class="offset-1 col-10 offset-md-2 col-md-8 offset-lg-3 col-lg-6 text-center">
+              <p class="save-the-date m-0">Annunciano con gioia il loro matrimonio</p>
             </div>
           </div>
         </div>
-
         <div class="hero-cerimonia">
           <div class="border-wrapper">
             <div class="border-right"></div>
@@ -176,6 +179,12 @@
         </div>
 
         <div class="container">
+          <div class="row">
+            <div class="offset-1 col-10 offset-md-2 col-md-8 offset-lg-3 col-lg-6 text-center">
+              <p id="save-the-date">
+              </p>
+            </div>
+          </div>
 <!--          <div class="row">-->
 <!--            <div class="col offset-md-2 col-md-8 offset-lg-3 col-lg-6">-->
 <!--              <img src="images/wedding_date.svg"-->
@@ -190,16 +199,22 @@
 <!--            </div>-->
 <!--          </div>-->
 <!--          -->
-          <div class="row" id="clockdiv">
-            <div class="col-12 d-flex justify-content-center">
+          <div class="row d-flex justify-content-center" id="countdown-container">
+            <div class="d-flex">
               <span class="days"></span>
               <span>d&nbsp;</span>
+            </div>
+            <div class="d-flex">
               <span class="hours"></span>
               <span>h&nbsp;</span>
+            </div>
+            <div class="d-flex">
               <span class="minutes"></span>
               <span>m&nbsp;</span>
+            </div>
+            <div class="d-flex">
               <span class="seconds"></span>
-              <span>s</span>
+              <span>s&nbsp;</span>
             </div>
           </div>
         </div>
@@ -259,19 +274,16 @@
             </div>
           </div>
         </div>
+
+        <!-- Wedding list of presents from Vetrinetta -->
         <div class="swiper-container" id="weddingList">
           <div class="swiper-wrapper"></div>
-<!--          <div class="swiper-button-next"></div>-->
-<!--          <div class="swiper-button-prev"></div>-->
-          <!-- Add Pagination -->
           <div class="swiper-pagination"></div>
         </div>
 
+        <!-- Wedding list of presents from De Nes's list -->
         <div class="swiper-container" id="weddingListBig">
           <div class="swiper-wrapper"></div>
-          <!--          <div class="swiper-button-next"></div>-->
-          <!--          <div class="swiper-button-prev"></div>-->
-          <!-- Add Pagination -->
           <div class="swiper-pagination"></div>
         </div>
       </section>
