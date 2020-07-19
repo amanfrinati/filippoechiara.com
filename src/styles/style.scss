@@ -384,6 +384,26 @@ p {
   }
 }
 
+.wedding-list-modal {
+  color: $blue;
+
+  .item-name {
+    background-color: $blue;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 1.4rem;
+    letter-spacing: 3px;
+    margin-bottom: 3rem;
+  }
+
+  p {
+
+  }
+}
+
 .honey-moon {
   h2 {
     font-size: 2.5rem;

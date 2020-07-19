@@ -95,18 +95,23 @@ $(document).ready(function() {
       }
 
       $('body').append(`
-        <div class="modal fade" id="item-${toCamelCase(item.id)}" tabindex="-1" role="dialog" aria-labelledby="modal-item-${toCamelCase(item.id)}" aria-hidden="true">
+        <div class="modal wedding-list-modal fade" id="item-${toCamelCase(item.id)}" tabindex="-1" role="dialog" aria-labelledby="modal-item-${toCamelCase(item.id)}" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="modal-item-${toCamelCase(item.id)}">${item.name}</h5>
+                <h5 class="modal-title" id="modal-item-${toCamelCase(item.id)}"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
-                <img src="${item.imageSrc || 'https://via.placeholder.com/300.png?text=Image'}" class="rounded float-center mw-100" alt="${item.name}">
+                <img src="${item.imageSrc || 'https://via.placeholder.com/300.png?text=Image'}" class="float-center mw-100" alt="${item.name}">
+                <div class="item-name">${item.name}</div>
                 <p>${item.description}</p>
+                <p>Puoi inviare una quota libera tramite bonifico a:</p>
+                <p>IT</p>
+                <p>intestato a "Filippo De Nes"</p>
+                <p>causale "Contributo per ${item.name}"</p>
               </div>
             </div>
           </div>
