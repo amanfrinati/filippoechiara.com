@@ -102,19 +102,24 @@ p {
   .swiper-pagination-bullet {
     width: 12px;
     height: 12px;
-    //border: solid 1px rgba(0,0,0,0.5);
+    border: solid 1px white;
+    background-color: $blue;
   }
 
   .swiper-pagination-bullet-active {
     background-color: white;
   }
 
-  .swiper-pagination-bullet-active-prev-prev,
   .swiper-pagination-bullet-active-prev,
-  .swiper-pagination-bullet-active-next,
-  .swiper-pagination-bullet-active-next-next {
+  .swiper-pagination-bullet-active-next {
     background-color: white;
     opacity: 0.9;
+  }
+
+  .swiper-pagination-bullet-active-prev-prev,
+  .swiper-pagination-bullet-active-next-next {
+    background-color: white;
+    opacity: 0.75;
   }
 }
 
@@ -385,6 +390,7 @@ p {
       width: 100%;
       opacity: 0;
       background-color: $blue;
+      will-change: opacity;
     }
 
     .phrase {
@@ -393,7 +399,7 @@ p {
       line-height: 4px;
       color: white;
       font-weight: 500;
-      padding-top: 15rem;
+      padding-top: 60vh;
     }
   }
 }
