@@ -17,7 +17,7 @@ import Typewriter from 'typewriter-effect/dist/core';
 
 $(document).ready(function() {
   new Swiper('.swiper-container.swiper-container-descriptions', {
-    initialSlide: 2,
+    initialSlide: 1,
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
@@ -36,26 +36,6 @@ $(document).ready(function() {
     },
     mousewheel: true,
   });
-
-  new Swiper('.swiper-container.party', {
-    slidesPerView: 1,
-    loop: true,
-    dynamicBullets: true,
-    autoHeight: true,
-    centeredSlides: true,
-    autoplay: {
-      delay: 2500,
-      disableOnInteraction: false,
-    },
-    pagination: {
-      el: '.swiper-container.party .swiper-pagination',
-      clickable: true,
-    },
-  });
-
-  // new Rellax(".rellax", {
-  //   center: true
-  // });
 });
 
 // $(window).scroll(function(event) {

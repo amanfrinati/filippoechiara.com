@@ -63,6 +63,11 @@ $(document).ready(function() {
       //   nextEl: '.swiper-button-next',
       //   prevEl: '.swiper-button-prev',
       // }
+      centeredSlides: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
       pagination: {
         el: '.swiper-pagination',
         dynamicBullets: true,
