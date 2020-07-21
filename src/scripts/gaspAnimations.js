@@ -6,6 +6,17 @@ gasp.registerPlugin(ScrollTrigger);
 // gsap.registerPlugin(DrawSVGPlugin);
 
 $(document).ready(function() {
+  // gasp.to('.swiper-container-descriptions .swiper-button', {
+  //   color: 'white',
+  //   duration: 1,
+  //   scrollTrigger: {
+  //     trigger: '.swiper-container-descriptions .h1',
+  //     start: 'top center',
+  //     end: '+=1px',
+  //     scrub: true
+  //   },
+  // });
+
   gasp.to('.sticky-container .sticky-content .madonna-corona',
     {
       opacity: 1,
@@ -25,7 +36,7 @@ $(document).ready(function() {
       ease: 'expo.out',
       scrollTrigger: {
         trigger: '.hero-cerimonia',
-        start: 'top center',
+        start: 'top bottom+=10%',
         end: "bottom center",
         scrub: true
       },
@@ -38,7 +49,7 @@ $(document).ready(function() {
       ease: 'expo.out',
       scrollTrigger: {
         trigger: '.hero-cerimonia',
-        start: 'top center',
+        start: 'top bottom-=10%',
         end: "bottom center",
         scrub: true
       },
