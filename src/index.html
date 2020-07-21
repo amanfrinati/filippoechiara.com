@@ -168,18 +168,29 @@
         </div>
       </section>
 
-      <section class="celebration">
-        <div class="chiara-and-filippo">
-          <img src="images/chiara_and_filippo.svg"
-               alt="Chiara Bonaldo and Filippo De Nes"/>
-        </div>
-        <div class="container">
-          <div class="row">
-            <div class="offset-1 col-10 offset-md-2 col-md-8 offset-lg-3 col-lg-6 text-center">
-              <p class="save-the-date m-0">Annunciano con gioia il loro matrimonio</p>
+      <section class="d-flex celebration">
+        <div class="align-self-center">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <div class="chiara-and-filippo">
+                  <img src="images/chiara_and_filippo.svg"
+                       alt="Chiara Bonaldo and Filippo De Nes"/>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="offset-1 col-10 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
+                <p id="save-the-date"></p>
+              </div>
             </div>
           </div>
         </div>
+      </section>
+
+      <section class="celebration">
         <div class="hero-cerimonia">
           <div class="border-wrapper">
             <div class="border-right"></div>
@@ -190,8 +201,17 @@
 
         <div class="container">
           <div class="row">
-            <div class="offset-1 col-10 offset-md-2 col-md-8 offset-lg-3 col-lg-6 text-center">
-              <p id="save-the-date">
+            <div class="offset-1 col-10 offset-md-2 col-md-8 offset-lg-3 col-lg-6 save-the-date">
+<!--              <p id="save-the-date">-->
+<!--              </p>-->
+              <p>
+                Sabato <strong>10</strong><br>
+                Ottobre <strong>2020</strong><br>
+                ore <strong>11.00</strong><br>
+              </p>
+              <p>
+                Chiesa dei Santi Filippo e Giacomo<br>
+                piazza Eremitani 9, Padova
               </p>
             </div>
           </div>
@@ -252,11 +272,26 @@
           <div class="row">
             <div class="col offset-md-2 col-md-8 offset-lg-3 col-lg-6">
               <h2>Ricevimento</h2>
-              <p>Siamo contenti di festeggiare con voi</p>
+              <p>Dopo la cerimonia siamo contenti di festeggiare con voi presso</p>
+              <p><strong>Villa Gritti</strong></p>
+              <p>via Villabella 74<br>
+                37047 Villabella - VR</p>
             </div>
           </div>
-          <div class="embed-responsive embed-responsive-16by9">
-            <iframe class="embed-responsive-item" src="https://youtu.be/gM1uRrqO-dA"></iframe>
+          <div class="embed-responsive embed-responsive-16by9 my-5">
+            <video id="video-villa-gritti"
+                   class="video-js vjs-default-skin"
+                   preload="auto"
+                   autoplay
+                   muted
+                   loop="loop"
+                   width="640"
+                   height="264"
+            >
+              <source src="videos/villa-gritti.webm" type="video/webm" />
+              <source src="videos/villa-gritti.mp4" type="video/mp4" />
+              <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+            </video>
           </div>
         </div>
       </section>
@@ -290,11 +325,22 @@
             <div class="row">
               <div class="col offset-md-2 col-md-8 offset-lg-3 col-lg-6">
                 <h2>Viaggio di nozze</h2>
-                <p>Il nostro desiderio è quello di poter partire appena possibile e visitare questi splendidi luoghi</p>
-                <p>Se vuoi aiutarci a realizzare questo nostro desiderio puoi contribuire attraveso bonifico seguedo queste coordinate</p>
+                <p>Il nostro desiderio è quello di poter partire appena possibile e visitare Bangkok e le Maldive.</p>
+                <p>Se vuoi aiutarci a realizzare questo nostro desiderio puoi contribuire attraverso bonifico seguedo queste coordinate:</p>
                 <p>Intestatario</p>
                 <p>Causale</p>
                 <p>Iban</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="ba-slider">
+                  <img src="images/maldive.jpg" alt="Atollo delle Maldive">
+                  <div class="resize">
+                    <img src="images/bangkok.jpg" alt="Una bella vista di Bangkok">
+                  </div>
+                  <span class="handle"></span>
+                </div>
               </div>
             </div>
           </div>
@@ -310,6 +356,7 @@
                 <div class="offset-1 col-10 offset-lg-3 col-lg-6">
                   <p class="text-left">“We got one last chance to make it real to trade in these wings on some wheels. Climb in back, heaven's waiting down on the tracks”</p>
                   <p class="text-right">Bruce Springsteen</p>
+                </div>
               </div>
             </div>
           </div>

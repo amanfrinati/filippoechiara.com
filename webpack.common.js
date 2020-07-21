@@ -66,6 +66,19 @@ module.exports = {
           }
         ]
       },
+      {
+        // Apply rule for video files
+        test: /\.(mp4|webm)$/,
+        use: [
+          {
+            // Using file-loader too
+            loader: "file-loader",
+            options: {
+              outputPath: 'videos'
+            }
+          }
+        ]
+      },
       // {
       //   test: /\.(png|jpe?g|gif)$/i,
       //   loader: 'file-loader',
@@ -100,6 +113,7 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: "src/assets/images", to: "images" },
+        { from: "src/assets/videos", to: "videos" },
     //     // { from: "src/assets/icons", to: "icons" },
     //     // { from: "src/assets/site.webmanifest", to: "site.webmanifest" },
     //     {

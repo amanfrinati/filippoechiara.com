@@ -1,9 +1,11 @@
 @import "~bootstrap";
 @import "~swiper/css/swiper.css";
+@import "~video.js/dist/video-js";
 // @import "./skewed";
 //@import "./slider";
 
 @import "fonts";
+@import "imageComparison";
 @import "variables";
 
 body {
@@ -247,15 +249,15 @@ p {
   }
 
   .eremitani-img {
-    background-image: url("../assets/images/Padova_Chiesa_degli_Eremitani_Innen_Langhaus_Ost_1_2x.jpg");
+    background-image: url("../assets/images/foto_eremitani_4k.jpg");
     background-repeat: no-repeat;
     background-size: contain;
     transform: scale(3);
     will-change: transform;
-    height: 33vh;
+    height: 75vh;
   }
 
-  #save-the-date, .save-the-date {
+  #save-the-date, .save-the-date p {
     padding: 3rem 0;
     text-align: center;
     font-size: 2rem;
@@ -360,7 +362,7 @@ p {
     padding: 0.5rem;
     font-size: 1.4rem;
     letter-spacing: 3px;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
   }
 
   p {
