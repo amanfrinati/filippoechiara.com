@@ -15,6 +15,7 @@ import Typewriter from 'typewriter-effect/dist/core';
 import "./scripts/countdown";
 import "./scripts/gaspAnimations";
 import "./scripts/imageComparison";
+import "./scripts/videoBackground";
 import "./scripts/weddingList";
 
 $(document).ready(function() {

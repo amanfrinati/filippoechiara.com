@@ -12,22 +12,27 @@ function toCamelCase(string) {
   return string.charAt(0).toLowerCase() + string.substring(1);
 }
 
+function truncateText(text, maxWidth) {
+   if (text.length > maxWidth) {
+      return text.substring(0, maxWidth) + '...';
+   }
+   return text;
+}
+
 function drawWeddingListItem(item) {
   return `
     <div class="swiper-slide swiper-slide-item">
-      <div class="card">
+      <div class="card" onclick="$('#item-${toCamelCase(item.id)}').modal('show')">
         <div class="wedding-list-item-image">
-          <img src="${item.imageSrc || 'https://via.placeholder.com/400.png?text=Image'}" class="card-img-top swiper-lazy" alt="placeholder">
+          <img src="${item.imageSrc || 'https://via.placeholder.com/400.png?text=Image'}" class="card-img-top swiper-lazy" alt="${item.name}">
         </div>
         <div class="card-body">
           <div class="wedding-list-item-title">
             <h6 class="text-center text-uppercase">${item.name}</h6>
           </div>
+          <p class="wedding-list-item-description">${truncateText(item.description || '', 26)}</p>
           <div class="${ item.totalAmount - item.paid <= 0 ? 'd-none' : 'wedding-list-item-price' }">
             <p class="text-center"><strong>${item.paid}/${item.totalAmount} €</strong></p>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#item-${toCamelCase(item.id)}">
-              Regala!
-            </button>
           </div>
           <div class="${ item.totalAmount - item.paid <= 0 ? '' : 'd-none' }">
             <div class="wedding-list-item-title wedding-list-item-completed">
@@ -77,7 +82,7 @@ $(document).ready(function() {
   db.collection("items").get().then(querySnapshot => {
     const swiperOptions = {
       slidesPerView: 1,
-      // loop: true,
+      loop: true,
       // autoHeight: true,
       freeMode: true,
       lazy: true,
@@ -86,10 +91,10 @@ $(document).ready(function() {
       //   prevEl: '.swiper-button-prev',
       // }
       centeredSlides: true,
-      autoplay: {
-        delay: 2500,
-        disableOnInteraction: false,
-      },
+      // autoplay: {
+      //   delay: 2500,
+      //   disableOnInteraction: false,
+      // },
       pagination: {
         el: '.swiper-pagination',
         dynamicBullets: true,
@@ -111,12 +116,12 @@ $(document).ready(function() {
      */
     querySnapshot.forEach(doc => {
       const item = { ...doc.data(), id: doc.id };
-      switch (item.category) {
-        case 1:
+      switch (item.type) {
+        case 1: // Kitchen
           swiperWeddingListVetrinetta.appendSlide(drawWeddingListItem(item));
           break;
 
-        case 2:
+        case 2: // Domestic appliances
           swiperWeddingListDeNes.appendSlide(drawWeddingListItem(item));
           break;
       }
@@ -139,21 +144,4 @@ $(document).ready(function() {
         </div>`);
     })
   });
-
-  // const vueApp = new Vue({
-  //   el: '#weddingList',
-  //   data () {
-  //     return {
-  //       items: null
-  //     }
-  //   },
-  //   mounted () {
-  //     Promise.all([
-  //       this,
-  //       db.collection("items").get()
-  //     ]).then(([_this, querySnapshot]) => {
-  //       _this.items = querySnapshot.docs.map(doc => doc.data());
-  //     })
-  //   }
-  // })
 });

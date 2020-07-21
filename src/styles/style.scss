@@ -28,6 +28,13 @@ h2 {
   letter-spacing: 3px;
 }
 
+h3 {
+  font-size: 1.35rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
 p {
   line-height: 1.35;
 }
@@ -227,7 +234,14 @@ p {
   background-color: $gray-10;
 
   p {
-    font-size: 1.45rem;
+    font-size: 1.55rem;
+    line-height: 1.35;
+
+    &.name {
+      font-size: 1.55rem;
+      line-height: 1.35;
+      letter-spacing: 3px;
+    }
   }
 
   .chiara-and-filippo {
@@ -251,7 +265,7 @@ p {
   .eremitani-img {
     background-image: url("../assets/images/foto_eremitani_4k.jpg");
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     transform: scale(3);
     will-change: transform;
     height: 75vh;
@@ -263,27 +277,63 @@ p {
     font-size: 2rem;
     line-height: 2;
   }
+}
 
-  #countdown-container {
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 2.4px;
-    background-color: $blue;
-    padding: 4rem 0;
+#countdown-container {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 2.4px;
+  background-color: $blue;
+
+  .date-naming {
+    font-weight: 300;
+    font-size: 1.1rem;
   }
 }
 
 // Party
 
 .party {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.4);
+
   p {
     font-size: 1.35rem;
+  }
+
+  .video-container {
+    position: absolute;
+    overflow: hidden;
+    min-width: 100%;
+    min-height: 100%;
+
+    video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      //width: auto;
+      //height: auto;
+      z-index: -1;
+      transform: translateX(-50%) translateY(-50%);
+      background: url('//demosthenes.info/assets/images/polina.jpg') no-repeat;
+      background-size: cover;
+      transition: 1s opacity;
+    }
+  }
+
+  .stopfade {
+    opacity: .5;
   }
 }
 
 // Wedding List
 
 .wedding-list {
+  min-height: unset;
+  padding: 5rem 0;
+
   p {
     font-size: 1.35rem;
   }
@@ -296,6 +346,10 @@ p {
       height: 500px;
       margin: 0 10vw;
       border: none;
+
+      .card-body {
+        padding-top: 0;
+      }
     }
 
     .wedding-list-item-image {
@@ -317,6 +371,7 @@ p {
       flex-direction: column;
 
       p {
+        font-size: 1.4rem;
         margin: 0.5rem 0;
       }
 
@@ -328,13 +383,14 @@ p {
     }
 
     .wedding-list-item-title {
-      background-color: $blue;
-      color: white;
+      background-color: white;
+      color: $blue;
       height: 75px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       padding: 0.25rem;
+      border: #20244d solid 2px;
 
       h6 {
         font-size: 1.4rem;
@@ -344,8 +400,20 @@ p {
       }
 
       &.wedding-list-item-completed {
-        background-color: $gray-10;
+        //background-color: $gray-10;
+        background-color: white;
+        border: none;
+        color: $blue;
+        height: auto;
+        padding: 0.25rem;
       }
+    }
+
+    .wedding-list-item-description {
+      font-weight: 300;
+      color: $blue;
+      text-align: center;
+      margin: 1rem 0;
     }
   }
 }
@@ -371,6 +439,9 @@ p {
 }
 
 .honey-moon {
+  min-height: unset;
+  padding: 5rem 0;
+
   h2 {
     font-size: 2.5rem;
   }
