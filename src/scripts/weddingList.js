@@ -39,6 +39,28 @@ function drawWeddingListItem(item) {
     </div>`;
 }
 
+function modalContent(item) {
+  if (item.category === 1) {
+    return `
+      <p>Se desideri regalarci questo articolo contatta o recati presso:</p>
+      <p class="text-center my-3">
+        "La Vetrinetta"<br>
+        Via Vigonovese, 93, 35127 Padova PD<br>
+        tel. +390498700975<br>
+        e-mail<br>
+        Lista nozze Bonaldo De Nes
+      </p>`;
+  } else if (item.category === 2) {
+    return `
+      <p>Se desideri regalarci questo articolo invia un bonifico a:</p>
+      <p class="text-center my-3">
+        Intestatario: Chiara Bonaldo<br>
+        IBAN: IT09F0306962692100000007337<br>
+        Causale: "${item.name} - Regalo di Nozze"
+      </p>`;
+  }
+}
+
 $(document).ready(function() {
   const firebaseConfig = {
     apiKey: "AIzaSyBPD4PuXZGxSOe2KrRdc7iQ45yQ1ni96WM",
@@ -103,20 +125,14 @@ $(document).ready(function() {
         <div class="modal wedding-list-modal fade" id="item-${toCamelCase(item.id)}" tabindex="-1" role="dialog" aria-labelledby="modal-item-${toCamelCase(item.id)}" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="modal-item-${toCamelCase(item.id)}"></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
               <div class="modal-body">
-                <img src="${item.imageSrc || 'https://via.placeholder.com/300.png?text=Image'}" class="float-center mw-100" alt="${item.name}">
                 <div class="item-name">${item.name}</div>
-                <p>${item.description}</p>
-                <p>Puoi inviare una quota libera tramite bonifico a:</p>
-                <p>IT</p>
-                <p>intestato a "Filippo De Nes"</p>
-                <p>causale "Contributo per ${item.name}"</p>
+                <img src="${item.imageSrc || 'https://via.placeholder.com/300.png?text=Image'}" class="float-center mw-100" alt="${item.name}">
+                <p><em>${item.description}</em></p>
+                ${modalContent(item)}
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>
               </div>
             </div>
           </div>
