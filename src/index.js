@@ -17,6 +17,16 @@ import "./scripts/gaspAnimations";
 import "./scripts/imageComparison";
 import "./scripts/weddingList";
 
+/**
+ * Stimulus
+ */
+import { Application } from "stimulus";
+import { definitionsFromContext } from "stimulus/webpack-helpers";
+
+const application = Application.start()
+const context = require.context("./scripts/controllers", true, /\.js$/)
+application.load(definitionsFromContext(context));
+
 $(document).ready(function() {
   new Swiper('.swiper-container.swiper-container-descriptions', {
     initialSlide: 1,
