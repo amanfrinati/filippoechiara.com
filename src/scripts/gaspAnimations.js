@@ -63,7 +63,7 @@ $(document).ready(function() {
       scrollTrigger: {
         trigger: '.final-section',
         start: 'top center',
-        end: "center center",
+        end: "top+=50% center",
         scrub: true
       },
     });
