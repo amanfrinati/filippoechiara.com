@@ -4,7 +4,7 @@ $zapfinoExtraLTPro: 'Zapfino Extra LT Pro';
 @import url('https://fonts.googleapis.com/css2?family=Mada:wght@300;400;500;700&display=swap');
 
 @font-face {
-  font-family: $zapfinoExtraLTPro;
+  font-family: $zapfinoExtraLTPro, sans-serif;
   src: url('../assets/fonts/ZapfinoExtraLTPro.eot'); /* IE9 Compat Modes */
   src: url('../assets/fonts/ZapfinoExtraLTPro.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
        url('../assets/fonts/ZapfinoExtraLTPro.woff2') format('woff2'), /* Super Modern Browsers */

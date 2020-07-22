@@ -231,6 +231,7 @@ p {
 // Celebration
 
 .celebration {
+  min-height: unset;
   background-color: $gray-10;
 
   p {
@@ -261,20 +262,31 @@ p {
   .hero-cerimonia {
     position: relative;
     overflow: hidden;
+    background-color: $blue;
 
     .border-left, .border-right {
       background-color: $gray-10;
     }
+
+    .eremitani-img {
+      background-image: url("../assets/images/foto_eremitani_4k.jpg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      transform: scale(3);
+      will-change: transform;
+      height: 65vh;
+
+      @media screen and (min-width: 450px) {
+        height: 70vh;
+      }
+
+      @media screen and (min-width: 500px) {
+        height: 75vh;
+        background-size: cover;
+      }
+    }
   }
 
-  .eremitani-img {
-    background-image: url("../assets/images/foto_eremitani_4k.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    transform: scale(3);
-    will-change: transform;
-    height: 75vh;
-  }
 
   #save-the-date, .save-the-date p {
     padding: 3rem 0;
