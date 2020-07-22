@@ -1,3 +1,16 @@
+$mada: 'Mada';
+$zapfinoExtraLTPro: 'Zapfino Extra LT Pro';
+
 @import url('https://fonts.googleapis.com/css2?family=Mada:wght@300;400;500;700&display=swap');
 
-$mada: 'Mada';
+@font-face {
+  font-family: $zapfinoExtraLTPro;
+  src: url('../assets/fonts/ZapfinoExtraLTPro.eot'); /* IE9 Compat Modes */
+  src: url('../assets/fonts/ZapfinoExtraLTPro.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../assets/fonts/ZapfinoExtraLTPro.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../assets/fonts/ZapfinoExtraLTPro.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../assets/fonts/ZapfinoExtraLTPro.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('../assets/fonts/ZapfinoExtraLTPro.svg#svgFontName') format('svg'); /* Legacy iOS */
+  font-weight: 300;
+  font-style: normal;
+}
