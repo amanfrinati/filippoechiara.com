@@ -266,7 +266,7 @@
         </div>
       </section>
 
-      <section class="wedding-list">
+      <section class="wedding-list" data-controller="wedding-list">
         <div class="container my-5">
           <div class="row">
             <div class="col offset-md-2 col-md-8 offset-lg-3 col-lg-6">
@@ -284,7 +284,7 @@
             </div>
           </div>
         </div>
-        <div class="swiper-container" id="weddingListVetrinetta">
+        <div class="swiper-container" id="weddingList" data-target="wedding-list.vetrinettaList">
           <div class="swiper-wrapper"></div>
           <div class="swiper-pagination"></div>
         </div>
@@ -297,9 +297,21 @@
             </div>
           </div>
         </div>
-        <div class="swiper-container" id="weddingListDeNes">
+        <div class="swiper-container" id="weddingListDeNes" data-target="wedding-list.deNesList">
           <div class="swiper-wrapper"></div>
           <div class="swiper-pagination"></div>
+        </div>
+
+        <div class="modal wedding-list-modal fade" id="item-modal" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body" data-target="wedding-list.itemModalContent">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" data-action="wedding-list#closeItemModal">Chiudi</button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

@@ -14,7 +14,6 @@ import "./scripts/countdown";
 import "./scripts/gaspAnimations";
 import "./scripts/imageComparison";
 import "./scripts/videoBackground";
-import "./scripts/weddingList";
 
 /**
  * Stimulus
