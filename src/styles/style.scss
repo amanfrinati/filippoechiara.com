@@ -287,7 +287,6 @@ p {
     }
   }
 
-
   #save-the-date, .save-the-date p {
     padding: 3rem 0;
     text-align: center;
@@ -386,12 +385,6 @@ p {
         font-size: 1.4rem;
         margin: 0.5rem 0;
       }
-
-      .btn-primary {
-        background-color: $blue;
-        border-color: $blue;
-        border-radius: 0;
-      }
     }
 
     .wedding-list-item-title {
@@ -442,7 +435,22 @@ p {
     padding: 0.5rem;
     font-size: 1.4rem;
     letter-spacing: 3px;
-    margin-bottom: 1.5rem;
+  }
+
+  .item-img {
+    height: 300px;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+
+    img {
+      height: 100%;
+    }
+  }
+
+  .item-price {
+    font-size: 1.4rem;
+    margin: 0.5rem 0;
   }
 }
 

@@ -61,10 +61,18 @@ export default class extends Controller {
     });
   }
 
+  /**
+   * Draw the slider element for the wedding list item.
+   * To open the modal item, I added `data-toggle="modal" data-target="#item-modal"` as specify in https://getbootstrap.com/docs/4.5/components/modal/#via-data-attributes
+   * @param item
+   * @returns {string}
+   */
   drawWeddingListItem(item) {
+    const paymentCompleted = item.totalAmount - item.paid <= 0;
+
     return `
       <div class="swiper-slide swiper-slide-item">
-        <div class="card" data-action="click->wedding-list#showModal" data-item-id="${item.id}" data-toggle="modal" data-target="#item-modal">
+        <div class="card" data-item-id="${item.id}" ${paymentCompleted ? '' : 'data-action="click->wedding-list#showModal" data-toggle="modal" data-target="#item-modal"'}>
           <div class="wedding-list-item-image">
             <img src="${item.imageSrc || 'https://via.placeholder.com/400.png?text=Image'}" class="card-img-top swiper-lazy" alt="${item.name}">
           </div>
@@ -73,10 +81,10 @@ export default class extends Controller {
               <h6 class="text-center text-uppercase">${item.name}</h6>
             </div>
             <p class="wedding-list-item-description">${truncateText(item.description || '', 26)}</p>
-            <div class="${ item.totalAmount - item.paid <= 0 ? 'd-none' : 'wedding-list-item-price' }">
+            <div class="${paymentCompleted ? 'd-none' : 'wedding-list-item-price' }">
               <p class="text-center"><strong>${item.paid}/${item.totalAmount} €</strong></p>
             </div>
-            <div class="${ item.totalAmount - item.paid <= 0 ? '' : 'd-none' }">
+            <div class="${paymentCompleted ? '' : 'd-none' }">
               <div class="wedding-list-item-title wedding-list-item-completed">
                 <h6 class="text-center text-uppercase">REGALATO!</h6>
               </div>
@@ -86,25 +94,33 @@ export default class extends Controller {
       </div>`;
   }
 
-  modalContent(item) {
+  drawModalContent(item) {
     let content = `
       <div class="item-name">${item.name}</div>
-      <img src="${item.imageSrc || 'https://via.placeholder.com/300.png?text=Image'}" class="float-center mw-100" alt="${item.name}">
-      <p><em>${item.description}</em></p>`;
+      <div class="item-img">
+        <img src="${item.imageSrc || 'https://via.placeholder.com/300.png?text=Image'}" alt="${item.name}">
+      </div>
+      <p class="item-price text-center"><strong>${item.paid}/${item.totalAmount} €</strong></p>
+      <p class="item-description"><em>${item.description}</em></p>
+      <hr>
+    `;
 
+    // 1 == Vetrinetta
     if (item.category === 1) {
       content += `
       <p>Se desideri regalarci questo articolo contatta o recati presso:</p>
       <p class="text-center my-3">
         "La Vetrinetta"<br>
         Via Vigonovese, 93, 35127 Padova PD<br>
-        tel. +390498700975<br>
-        e-mail<br>
+        tel. <a href="tel:+390498700975">+390498700975</a><br>
+        e-mail <a href="mailto:lavetrinetta@foralberg.it">lavetrinetta@foralberg.it</a><br>
         Lista nozze Bonaldo De Nes
       </p>`;
+
+    // 2 == De Nes List
     } else if (item.category === 2) {
       content += `
-      <p>Se desideri regalarci questo articolo invia un bonifico a:</p>
+      <p>Se desideri regalarci questo articolo, puoi inviare un bonifico alle seguenti coordinate:</p>
       <p class="text-center my-3">
         Intestatario: Chiara Bonaldo<br>
         IBAN: IT09F0306962692100000007337<br>
@@ -117,7 +133,7 @@ export default class extends Controller {
 
   showModal(event) {
     event.preventDefault();
-    this.itemModalContentTarget.innerHTML = this.modalContent(
+    this.itemModalContentTarget.innerHTML = this.drawModalContent(
       this.weddingListItems.find(item => item.id === event.currentTarget.dataset.itemId)
     )
   }
