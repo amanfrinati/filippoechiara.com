@@ -120,7 +120,7 @@ export default class extends Controller {
     // 2 == De Nes List
     } else if (item.category === 2) {
       content += `
-      <p>Se desideri regalarci questo articolo, puoi inviare un bonifico alle seguenti coordinate:</p>
+      <p>Se desideri regalarci questo articolo, puoi contribuire attraverso bonifico seguendo queste coordinate:</p>
       <p class="text-center my-3">
         Intestatario: Chiara Bonaldo<br>
         IBAN: IT09F0306962692100000007337<br>
