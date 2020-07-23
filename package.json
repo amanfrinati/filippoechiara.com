@@ -21,6 +21,7 @@
   "homepage": "https://github.com/amanfrinati/filippoechiara.com#readme",
   "devDependencies": {
     "@babel/core": "^7.10.4",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
     "@babel/preset-env": "^7.10.4",
     "autoprefixer": "^9.8.4",
     "babel-loader": "^8.1.0",
@@ -50,9 +51,7 @@
     "jquery-visible": "^1.2.0",
     "popper.js": "^1.16.1",
     "slick-carousel": "^1.8.1",
-    "swiper": "^5.4.5",
-    "typewriter-effect": "^2.13.1",
-    "video.js": "^7.8.4",
-    "vue": "^2.6.11"
+    "stimulus": "^1.1.1",
+    "swiper": "^5.4.5"
   }
 }

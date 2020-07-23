@@ -1,12 +1,12 @@
 @import "~bootstrap";
 @import "~swiper/css/swiper.css";
-@import "~video.js/dist/video-js";
 // @import "./skewed";
 //@import "./slider";
 
 @import "fonts";
 @import "imageComparison";
 @import "variables";
+@import "rsvpForm";
 
 body {
   font-family: $mada, sans-serif;
@@ -231,6 +231,7 @@ p {
 // Celebration
 
 .celebration {
+  min-height: unset;
   background-color: $gray-10;
 
   p {
@@ -241,6 +242,11 @@ p {
       font-size: 1.55rem;
       line-height: 1.35;
       letter-spacing: 3px;
+    }
+
+    &.ampersand {
+      font-family: $zapfinoExtraLTPro;
+      font-size: 3rem;
     }
   }
 
@@ -256,19 +262,29 @@ p {
   .hero-cerimonia {
     position: relative;
     overflow: hidden;
+    background-color: $blue;
 
     .border-left, .border-right {
       background-color: $gray-10;
     }
-  }
 
-  .eremitani-img {
-    background-image: url("../assets/images/foto_eremitani_4k.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    transform: scale(3);
-    will-change: transform;
-    height: 75vh;
+    .eremitani-img {
+      background-image: url("../assets/images/foto_eremitani_4k.jpg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      transform: scale(3);
+      will-change: transform;
+      height: 65vh;
+
+      @media screen and (min-width: 450px) {
+        height: 70vh;
+      }
+
+      @media screen and (min-width: 500px) {
+        height: 75vh;
+        background-size: cover;
+      }
+    }
   }
 
   #save-the-date, .save-the-date p {
@@ -369,12 +385,6 @@ p {
         font-size: 1.4rem;
         margin: 0.5rem 0;
       }
-
-      .btn-primary {
-        background-color: $blue;
-        border-color: $blue;
-        border-radius: 0;
-      }
     }
 
     .wedding-list-item-title {
@@ -425,7 +435,22 @@ p {
     padding: 0.5rem;
     font-size: 1.4rem;
     letter-spacing: 3px;
-    margin-bottom: 1.5rem;
+  }
+
+  .item-img {
+    height: 300px;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+
+    img {
+      height: 100%;
+    }
+  }
+
+  .item-price {
+    font-size: 1.4rem;
+    margin: 0.5rem 0;
   }
 }
 

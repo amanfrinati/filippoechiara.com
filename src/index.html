@@ -169,41 +169,31 @@
       </section>
 
       <section class="celebration">
-        <div class="container">
-<!--          <div class="row">-->
-<!--            <div class="col">-->
-<!--              <div class="chiara-and-filippo">-->
-<!--                <img src="images/chiara_and_filippo.svg"-->
-<!--                     alt="Chiara Bonaldo and Filippo De Nes"/>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-          <div class="row">
-            <div class="col offset-md-2 col-md-8 offset-lg-3 col-lg-6">
-<!--              <p class="name"><strong>IO</strong> CHIARA BONALDO</p>-->
-<!--              <p class="name"><strong>IO</strong> FILIPPO DE NES</p>-->
-              <p class="name mt-5 mb-3"><strong>CHIARA BONALDO</strong></p>
-              <p>and</p>
-              <p class="name mb-5 mt-3"><strong>FILIPPO DE NES</strong></p>
-              <p>
-                Annunciano con gioia<br>
-                il loro matrimonio
-              </p>
-              <p>
-                Sabato <strong>10</strong><br>
-                Ottobre <strong>2020</strong><br>
-                ore <strong>11.00</strong><br>
-              </p>
-              <p>
-                Chiesa dei Santi Filippo e Giacomo<br>
-                piazza Eremitani 9, Padova
-              </p>
+        <div class="d-flex min-vh-100">
+          <div class="container align-self-center">
+            <div class="row">
+              <div class="col offset-md-2 col-md-8 offset-lg-3 col-lg-6">
+                <p class="name mt-5 mb-3"><strong>CHIARA BONALDO</strong></p>
+                <p class="ampersand m-0">and</p>
+                <p class="name mb-5 mt-2"><strong>FILIPPO DE NES</strong></p>
+                <p>
+                  Annunciano con gioia<br>
+                  il loro matrimonio
+                </p>
+                <p>
+                  Sabato <strong>10</strong><br>
+                  Ottobre <strong>2020</strong><br>
+                  ore <strong>11.00</strong><br>
+                </p>
+                <p>
+                  Chiesa dei Santi Filippo e Giacomo<br>
+                  piazza Eremitani 9, Padova
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </section>
 
-      <section class="celebration">
         <div class="hero-cerimonia">
           <div class="border-wrapper">
             <div class="border-right"></div>
@@ -211,37 +201,6 @@
           </div>
           <div class="eremitani-img" role="img"></div>
         </div>
-
-<!--        <div class="container">-->
-<!--          <div class="row">-->
-<!--            <div class="offset-1 col-10 offset-md-2 col-md-8 offset-lg-3 col-lg-6 save-the-date">-->
-<!--&lt;!&ndash;              <p id="save-the-date">&ndash;&gt;-->
-<!--&lt;!&ndash;              </p>&ndash;&gt;-->
-<!--              <p>-->
-<!--                Sabato <strong>10</strong><br>-->
-<!--                Ottobre <strong>2020</strong><br>-->
-<!--                ore <strong>11.00</strong><br>-->
-<!--              </p>-->
-<!--              <p>-->
-<!--                Chiesa dei Santi Filippo e Giacomo<br>-->
-<!--                piazza Eremitani 9, Padova-->
-<!--              </p>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div class="row">-->
-<!--            <div class="col offset-md-2 col-md-8 offset-lg-3 col-lg-6">-->
-<!--              <img src="images/wedding_date.svg"-->
-<!--                   alt="Annunciano con gioia il loro matrimonio, sabato 10 Ottobre 2020 ore 11, Chiesa dei Santi Filippo e Giacomo, Piazza Eremitani 9, Padova"/>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div class="container">-->
-<!--            <div class="row">-->
-<!--              <div class="col offset-md-2 col-md-8 offset-lg-3 col-lg-6 text-center">-->
-<!--                <p class="text-center">Annunciano con gioia il loro matrimonio</p>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          -->
       </section>
 
       <section class="d-flex justify-content-center">
@@ -307,7 +266,7 @@
         </div>
       </section>
 
-      <section class="wedding-list">
+      <section class="wedding-list" data-controller="wedding-list">
         <div class="container my-5">
           <div class="row">
             <div class="col offset-md-2 col-md-8 offset-lg-3 col-lg-6">
@@ -325,7 +284,7 @@
             </div>
           </div>
         </div>
-        <div class="swiper-container" id="weddingListVetrinetta">
+        <div class="swiper-container" id="weddingList" data-target="wedding-list.vetrinettaList">
           <div class="swiper-wrapper"></div>
           <div class="swiper-pagination"></div>
         </div>
@@ -338,9 +297,21 @@
             </div>
           </div>
         </div>
-        <div class="swiper-container" id="weddingListDeNes">
+        <div class="swiper-container" id="weddingListDeNes" data-target="wedding-list.deNesList">
           <div class="swiper-wrapper"></div>
           <div class="swiper-pagination"></div>
+        </div>
+
+        <div class="modal wedding-list-modal fade" id="item-modal" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body" data-target="wedding-list.itemModalContent">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" data-action="wedding-list#closeItemModal">Chiudi</button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -365,6 +336,60 @@
               <img src="images/bangkok.jpg" alt="Una bella vista di Bangkok">
             </div>
             <span class="handle"></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="d-none">
+        <div class="container">
+          <div class="row">
+            <div class="col offset-md-2 col-md-8 offset-lg-3 col-lg-6">
+              <h2>RSVP</h2>
+
+              <form id="rsvpForm" method="post" data-controller="rsvp">
+                <fieldset>
+                  <div class="message hidden"></div>
+                  <div class="hidden" data-target="rsvp.templateRow">
+                    <div class="display-flex-columns">
+                      <label><input type="hidden" name="id"></label>
+                      <span class="add-remove">
+                        <a data-action="click->rsvp#add" class="btn btn__add-guest">
+                          <span class="icon-plus"></span>
+                        </a>
+                        <a data-action="click->rsvp#retract" class="btn btn__remove-guest">
+                          <span class="icon-minus"></span>
+                        </a>
+                      </span>
+                      <label>
+                        <input type="text" name="fullName" placeholder="First &amp; Last Name" data-action="onblur->rsvp#checkValue">
+                      </label>
+                    </div>
+                    <div class="guestControls">
+                      <div class="attendance">
+                        <label class="first"><input type="radio" name="attendance" value="1" data-action="click->rsvp#attending" data-attending-value="1" class="form-radio"> Will Attend</label>
+                        <label><input type="radio" name="attendance" value="0" data-action="click->rsvp#attending" data-attending-value="0" class="form-radio"> Will Not Attend</label>
+                      </div>
+<!--                      <div class="mealOptions">-->
+<!--                        <strong>Meal Choice:</strong> <br>-->
+<!--                        <label class="first"><input type="radio" name="mealChoice" value="salmon" class="form-radio"> Salmon</label>-->
+<!--                        <label><input type="radio" name="mealChoice" value="steak" class="form-radio"> Steak</a></label>-->
+<!--                        <label><input type="radio" name="mealChoice" value="kids" class="form-radio"> Kid's</a></label>-->
+<!--                        <div class="small">-->
+<!--                          <p><strong>Mustard Glazed Salmon</strong> <br> Buttermilk Mashed Potato, Cured Tomato, Pencil Asparagus,-->
+<!--                            Beechwood Mushroom</p>-->
+<!--                          <p><strong>Herb Crusted Strip Steak</strong> <br> Bacon Scallion Yukon Potato Hash, Broccolini and Baby-->
+<!--                            Carrot, Braised Cipollini, Peppercorn Glaze</p>-->
+<!--                          <p><strong>Kid's Menu</strong> <br> 10 years old or younger. Chicken Tenders with Fries. Sides include-->
+<!--                            carrots and celery sticks.</p>-->
+<!--                        </div>-->
+<!--                      </div>-->
+                    </div>
+                  </div>
+                  <div data-target="rsvp.guests"></div>
+                </fieldset>
+                <input type="submit" value="Complete RSVP" disabled data-action="rsvp#submit">
+              </form>
+            </div>
           </div>
         </div>
       </section>
