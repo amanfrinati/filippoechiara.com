@@ -39,6 +39,21 @@ p {
   line-height: 1.35;
 }
 
+.sticky-container {
+  height: 275vh;
+  margin-top: -100vh;
+
+  .sticky-content {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+  }
+
+  .section-content {
+    padding-top: 40vh;
+  }
+}
+
 .logo-landing {
   background-color: $blue;
 }
@@ -48,12 +63,17 @@ p {
   width: 50%;
 }
 
+.logo-name {
+  padding: 2rem 0;
+}
+
 .swiper-container.swiper-container-descriptions {
   height: 100vh;
 
   p {
     font-size: 1.45rem;
     padding-bottom: 2rem;
+    margin: 0;
   }
 
   & .swiper-container {
@@ -66,25 +86,30 @@ p {
     img {
       max-width: 100%;
     }
+  }
 
-    .h1, p {
-      padding-left: 3rem;
-      padding-right: 3rem;
+  .sticky-container {
+    height: 420vh;
+
+    .sticky-content {
+      z-index: -1;
     }
   }
 
   .description-img {
     width: 100vw;
-    height: calc(100vh - 50px);
+    height: calc(100% - 50px);
     background-repeat: no-repeat;
     background-size: cover;
 
-    &.description-chiara {
+    &.description-chiara-img {
       background-image: url('../assets/images/Chiara_description_p_2x.jpg');
+      opacity: 1;
     }
 
-    &.description-filippo {
+    &.description-filippo-img {
       background-image: url('../assets/images/Filippo_description_p_2x.jpg');
+      opacity: 1;
     }
 
     &.description-together {
@@ -92,10 +117,9 @@ p {
     }
   }
 
-
-  .description-content {
-    padding-left: 3rem;
-    padding-right: 3rem;
+  .description-chiara-content,
+  .description-filippo-content {
+    background: linear-gradient(to bottom, $blue 25%, $blue 75%, transparent);
   }
 
   .swiper-button-next,
@@ -133,21 +157,6 @@ p {
   }
 }
 
-.sticky-container {
-  height: 275vh;
-  margin-top: -100vh;
-
-  .sticky-content {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-  }
-
-  .section-content {
-    padding-top: 40vh;
-  }
-}
-
 .quotes {
   min-height: unset;
   height: 275vh;
@@ -173,16 +182,15 @@ p {
     will-change: opacity;
   }
 }
-
-
-.fade-in {
-  animation: fadein 1s cubic-bezier(0.4, 0, 1, 1);
-}
-
-@keyframes fadein {
-  from { opacity: 0; transform: translateY(50px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+//
+//.fade-in {
+//  animation: fadein 1s cubic-bezier(0.4, 0, 1, 1);
+//}
+//
+//@keyframes fadein {
+//  from { opacity: 0; transform: translateY(50px); }
+//  to   { opacity: 1; transform: translateY(0); }
+//}
 
 .border-wrapper {
   position: absolute;
@@ -245,7 +253,7 @@ p {
     }
 
     &.ampersand {
-      font-family: $zapfinoExtraLTPro;
+      font-family: $zapfinoExtraLTPro, sans-serif;
       font-size: 3rem;
     }
   }

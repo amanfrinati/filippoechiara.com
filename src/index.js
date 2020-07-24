@@ -37,13 +37,14 @@ $(document).ready(function() {
     },
   });
 
-  new Swiper('.swiper-scroll', {
-    direction: 'vertical',
-    slidesPerView: 'auto',
-    freeMode: true,
-    scrollbar: {
-      el: '.swiper-scrollbar',
-    },
-    mousewheel: true,
-  });
+  // new Swiper('.swiper-scroll', {
+  //   direction: 'vertical',
+  //   slidesPerView: 'auto',
+  //   // autoHeight: true,
+  //   freeMode: true,
+  //   // scrollbar: {
+  //   //   el: '.swiper-scrollbar',
+  //   // },
+  //   // mousewheel: true,
+  // });
 });
