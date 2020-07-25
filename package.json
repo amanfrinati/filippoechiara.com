@@ -45,7 +45,9 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "@babel/runtime": "^7.10.5",
     "bootstrap": "^4.5.0",
+    "core-js": "3",
     "gsap": "^3.3.4",
     "jquery": "^3.5.1",
     "jquery-visible": "^1.2.0",
