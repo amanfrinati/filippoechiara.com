@@ -23,42 +23,50 @@ export default class extends Controller {
   };
 
   connect() {
+    [this.vetrinettaListTarget, this.deNesListTarget]
+      .forEach(el => el.classList.toggle('d-none'));
+
     this.swiperWeddingListVetrinetta = new Swiper(this.vetrinettaListTarget, this.swiperOptions);
     this.swiperWeddingListDeNes = new Swiper(this.deNesListTarget, this.swiperOptions);
 
     this.db = firebase.firestore();
-    this.db.collection("items")
-      .get()
-      .then(querySnapshot => {
+    Promise.all([
+      [this.vetrinettaListTarget, this.deNesListTarget],
+      this.db.collection("items").get()
+    ])
+      .then(data => {
+        const [ listTargets, querySnapshot ] = data
 
-      /**
-       * Item model
-       *
-       * description
-       * imageSrc
-       * name
-       * paid
-       * totalAmount
-       * category: 1 == Vetrinetta, 2 == De Nes List
-       * type: 1 == Kitchen, 2 == Domestic appliances
-       */
-      this.weddingListItems = querySnapshot.docs.map(doc => ({ ...doc.data(), id: toCamelCase(doc.id) }));
-      this.weddingListItems
-        .sort((a, b) =>
-          a.name.localeCompare(b.name)
-        )
-        .forEach(item => {
-          switch (item.type) {
-            case 1: // Kitchen
-              this.swiperWeddingListVetrinetta.appendSlide(this.drawWeddingListItem(item));
-              break;
+        /**
+         * Item model
+         *
+         * description
+         * imageSrc
+         * name
+         * paid
+         * totalAmount
+         * category: 1 == Vetrinetta, 2 == De Nes List
+         * type: 1 == Kitchen, 2 == Domestic appliances
+         */
+        this.weddingListItems = querySnapshot.docs.map(doc => ({ ...doc.data(), id: toCamelCase(doc.id) }));
+        this.weddingListItems
+          .sort((a, b) =>
+            a.name.localeCompare(b.name)
+          )
+          .forEach(item => {
+            switch (item.type) {
+              case 1: // Kitchen
+                this.swiperWeddingListVetrinetta.appendSlide(this.drawWeddingListItem(item));
+                break;
 
-            case 2: // Domestic appliances
-              this.swiperWeddingListDeNes.appendSlide(this.drawWeddingListItem(item));
-              break;
-          }
-        })
-    });
+              case 2: // Domestic appliances
+                this.swiperWeddingListDeNes.appendSlide(this.drawWeddingListItem(item));
+                break;
+            }
+          })
+
+          listTargets.forEach(el => el.classList.toggle('d-none'));
+      });
   }
 
   /**
