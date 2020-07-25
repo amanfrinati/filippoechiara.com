@@ -300,7 +300,12 @@
             </div>
           </div>
         </div>
-        <div class="swiper-container" id="weddingList" data-target="wedding-list.vetrinettaList">
+        <div class="d-flex justify-content-center">
+          <div class="spinner-border my-5" role="status" data-target="wedding-list.loading">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+        <div class="swiper-container" data-target="wedding-list.vetrinettaList">
           <div class="swiper-wrapper"></div>
           <div class="swiper-pagination"></div>
         </div>
@@ -313,19 +318,25 @@
             </div>
           </div>
         </div>
-        <div class="swiper-container" id="weddingListDeNes" data-target="wedding-list.deNesList">
+        <div class="d-flex justify-content-center">
+          <div class="spinner-border my-5" role="status" data-target="wedding-list.loading">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+        <div class="swiper-container" data-target="wedding-list.deNesList">
           <div class="swiper-wrapper"></div>
           <div class="swiper-pagination"></div>
         </div>
 
         <div class="modal wedding-list-modal fade" id="item-modal" tabindex="-1" role="dialog" aria-hidden="true">
-          <div class="modal-dialog">
+          <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-              <div class="modal-body" data-target="wedding-list.itemModalContent">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-action="wedding-list#closeItemModal">
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" data-action="wedding-list#closeItemModal">Chiudi</button>
-              </div>
+              <div class="modal-body" data-target="wedding-list.itemModalContent"></div>
             </div>
           </div>
         </div>

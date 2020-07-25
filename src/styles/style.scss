@@ -378,7 +378,7 @@ p {
 
       img {
         width: 100%;
-        object-fit: contain;
+        object-fit: scale-down;
         height: 300px;
         padding: 0.5rem 1.25rem;
       }
@@ -452,7 +452,8 @@ p {
     justify-content: center;
 
     img {
-      height: 100%;
+      object-fit: scale-down;
+      width: 100%;
     }
   }
 
@@ -460,7 +461,15 @@ p {
     font-size: 1.4rem;
     margin: 0.5rem 0;
   }
+
+  .contact-information {
+    margin: 1rem 0;
+    text-align: center;
+    line-height: 1.75;
+  }
 }
+
+// Honey moon
 
 .honey-moon {
   min-height: unset;

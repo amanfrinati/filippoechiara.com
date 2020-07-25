@@ -4,7 +4,12 @@ import Swiper from "swiper";
 require("firebase/firestore");
 
 export default class extends Controller {
-  static targets = ['vetrinettaList', 'deNesList', 'itemModalContent'];
+  static targets = [
+    'vetrinettaList',
+    'deNesList',
+    'itemModalContent',
+    'loading'
+  ];
 
   swiperOptions = {
     // slidesPerView: 1,
@@ -23,7 +28,7 @@ export default class extends Controller {
   };
 
   connect() {
-    [this.vetrinettaListTarget, this.deNesListTarget]
+    [this.vetrinettaListTarget.firstElementChild, this.deNesListTarget.firstElementChild]
       .forEach(el => el.classList.toggle('d-none'));
 
     this.swiperWeddingListVetrinetta = new Swiper(this.vetrinettaListTarget, this.swiperOptions);
@@ -31,7 +36,9 @@ export default class extends Controller {
 
     this.db = firebase.firestore();
     Promise.all([
-      [this.vetrinettaListTarget, this.deNesListTarget],
+      [this.vetrinettaListTarget.firstElementChild,
+        this.deNesListTarget.firstElementChild,
+        ...this.loadingTargets],
       this.db.collection("items").get()
     ])
       .then(data => {
@@ -117,7 +124,7 @@ export default class extends Controller {
     if (item.category === 1) {
       content += `
       <p>Se desideri regalarci questo articolo contatta o recati presso:</p>
-      <p class="text-center my-3">
+      <p class="contact-information">
         "La Vetrinetta"<br>
         Via Vigonovese, 93, 35127 Padova PD<br>
         tel. <a href="tel:+390498700975">+390498700975</a><br>
@@ -129,7 +136,7 @@ export default class extends Controller {
     } else if (item.category === 2) {
       content += `
       <p>Se desideri regalarci questo articolo, puoi contribuire attraverso bonifico seguendo queste coordinate:</p>
-      <p class="text-center my-3">
+      <p class="contact-information">
         Intestatario: Chiara Bonaldo<br>
         IBAN: IT09F0306962692100000007337<br>
         Causale: "${item.name} - Regalo di Nozze"
