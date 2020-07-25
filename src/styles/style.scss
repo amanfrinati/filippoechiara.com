@@ -84,7 +84,7 @@ p {
     height: unset;
 
     img {
-      max-width: 100%;
+      max-width: 70%;
     }
   }
 
@@ -279,7 +279,8 @@ p {
     .eremitani-img {
       background-image: url("../assets/images/foto_eremitani_4k.jpg");
       background-repeat: no-repeat;
-      background-size: contain;
+      background-size: cover;
+      background-position: center;
       transform: scale(3);
       will-change: transform;
       height: 65vh;
@@ -290,7 +291,6 @@ p {
 
       @media screen and (min-width: 500px) {
         height: 75vh;
-        background-size: cover;
       }
     }
   }
