@@ -484,6 +484,45 @@ p {
   }
 }
 
+// RSVP
+
+#rsvpForm {
+  font-size: 1.35rem;
+
+  .form-group {
+
+  }
+
+  input[type='text'],
+  textarea {
+    border: solid white 2px;
+    border-radius: 0;
+    background: transparent;
+    color: white;
+    font-size: 1.35rem;
+
+    &::placeholder {
+      color: white;
+    }
+  }
+
+  textarea {
+    font-style: italic;
+  }
+
+  button[type='submit'] {
+    border-radius: 0;
+    font-size: 1.35rem;
+    border: solid white 2px;
+    background-color: $blue;
+
+    &:hover {
+      color: $blue;
+      background-color: white;
+    }
+  }
+}
+
 // Final Section
 
 .final-section {

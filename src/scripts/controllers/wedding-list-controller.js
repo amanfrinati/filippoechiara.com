@@ -24,7 +24,22 @@ export default class extends Controller {
     pagination: {
       el: '.swiper-pagination',
       dynamicBullets: true,
+      clickable: true
     },
+    breakpoints: {
+      // 640: {
+      //   slidesPerView: 2,
+      //   spaceBetween: 5,
+      // },
+      // 768: {
+      //   slidesPerView: 4,
+      //   spaceBetween: 40,
+      // },
+      // 1024: {
+      //   slidesPerView: 5,
+      //   spaceBetween: 50,
+      // },
+    }
   };
 
   connect() {
