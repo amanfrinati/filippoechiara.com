@@ -15,6 +15,9 @@ import "./scripts/gaspAnimations";
 import "./scripts/imageComparison";
 import "./scripts/videoBackground";
 
+import Form from "./scripts/components/Form.jsx";
+import RSVPForm from "./scripts/components/RSVPForm.jsx";
+
 /**
  * Stimulus
  */
