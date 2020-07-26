@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import MessageArea from "./MessageArea.jsx";
-import firebase from '../firebase';
+import firebase from '../../../firebase';
 import RandomString from "./RandomString";
 require("firebase/firestore");
 import Alert from 'react-bootstrap/Alert';
