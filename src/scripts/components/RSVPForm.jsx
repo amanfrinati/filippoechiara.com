@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import MessageArea from "./MessageArea.jsx";
+import firebase from '../firebase';
+import RandomString from "./RandomString";
+require("firebase/firestore");
 
 export class RSVPForm extends Component {
   constructor(props) {
@@ -10,6 +13,8 @@ export class RSVPForm extends Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
+
+    this.db = firebase.firestore();
   }
 
   attendanceOptionChanged(e) {
@@ -31,7 +36,16 @@ export class RSVPForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state)
+
+    this.db.collection('rsvps').doc(RandomString()).set({
+      ...this.state
+    })
+      .then(function() {
+        console.log("Document successfully written!");
+      })
+      .catch(function(error) {
+        console.error("Error writing document: ", error);
+      });
   }
 
   render() {
