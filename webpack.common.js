@@ -27,6 +27,7 @@ module.exports = {
           path.resolve(__dirname, 'src', 'styles')
         ],
         use: [
+          "style-loader",
           {
             // After all CSS loaders we use plugin to do his work.
             // It gets all transformed CSS and extracts it into separate
