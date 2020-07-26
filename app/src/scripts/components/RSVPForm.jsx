@@ -67,14 +67,6 @@ export class RSVPForm extends Component {
   render() {
     return (
       <div>
-        <Alert show={this.state.rsvpResult.show}
-               variant={this.state.rsvpResult.variant}
-               dismissible
-               onClose={() => this.showAlert(false, '', '')}
-        >
-          {this.state.rsvpResult.message}
-        </Alert>
-
         <form className="rsvp"
               method="post"
               noValidate
@@ -181,6 +173,17 @@ export class RSVPForm extends Component {
 
           <button className="btn btn-primary" type="submit">Conferma!</button>
         </form>
+
+        <div className="my-5">
+          <Alert show={this.state.rsvpResult.show}
+                 variant={this.state.rsvpResult.variant}
+                 dismissible
+                 onClose={() => this.showAlert(false, '', '')}
+          >
+            {this.state.rsvpResult.message}
+          </Alert>
+        </div>
+
       </div>
     )
   }
