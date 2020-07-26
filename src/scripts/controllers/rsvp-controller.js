@@ -6,7 +6,12 @@ require("firebase/database");
 // Adopt code from https://github.com/drukelly/RSVP-Form
 
 export default class extends Controller {
-  static targets = ['templateRow', 'guests'];
+  static targets = ['form',
+    // 'templateRow',
+    // 'guests',
+    'guestOptions',
+    'message'
+  ];
 
   get templateRow() {
     return this.templateRowTarget.innerHTML;
@@ -20,7 +25,7 @@ export default class extends Controller {
     // rsvp collections
     this.rsvpRef = firebase.database().ref('rsvps');
 
-    this.add();
+    // this.add();
   }
 
   // -----------------------
@@ -67,7 +72,7 @@ export default class extends Controller {
     this.removeLast();
     const element = document.createElement('div');
     element.innerHTML = this.templateRow;
-    element.classList.add('inputRow');
+    // element.classList.add('inputRow');
     if (this.content.children.length === 0) {
       element.classList.add('first');
     }
@@ -86,26 +91,39 @@ export default class extends Controller {
   // if guest is attending, avail the options to choose menu
   // only show +/- if guest is attending. if not, hide it
   attending(element, value) {
-    // console.log(element, value);
-    const mealOptions = element.parentNode.parentNode.nextElementSibling;
-    if (value > 0) {
-      mealOptions.style.display = 'block';
+    if (element.value === '1') {
+      this.guestOptionsTarget.classList.remove('d-none');
     } else {
-      mealOptions.style.display = 'none';
-      // reset mealChoice or mealChoices to false
-      const mealChoices = mealOptions.querySelectorAll('input[type="radio"]');
-      mealChoices.forEach(mealChoice => {
-        mealChoice.checked = false;
-      });
+      this.guestOptionsTarget.classList.add('d-none');
     }
+
+    this.messageTarget.classList.remove('d-none');
+
+
+
+
+    // const mealOptions = element.parentNode.parentNode.nextElementSibling;
+    // if (value > 0) {
+    //   mealOptions.style.display = 'block';
+    // } else {
+    //   mealOptions.style.display = 'none';
+    //   // reset mealChoice or mealChoices to false
+    //   const mealChoices = mealOptions.querySelectorAll('input[type="radio"]');
+    //   mealChoices.forEach(mealChoice => {
+    //     mealChoice.checked = false;
+    //   });
+    // }
   }
 
-  checkValue(element) {
-    if (element.value) {
-      const form = document.getElementById('rsvpForm');
-      form.querySelector('input[type="submit"]').removeAttribute('disabled');
-    }
-  }
+  // TODO: Improve this
+  // checkValue(element) {
+  //   if (element.value) {
+  //     document
+  //       .getElementById('rsvpForm')
+  //       .querySelector('input[type="submit"]')
+  //       .removeAttribute('disabled');
+  //   }
+  // }
 
   startOver() {
     // display success message
@@ -123,42 +141,55 @@ export default class extends Controller {
       document.querySelector('.message').innerHTML = '';
     }, 3000);
   }
+
+  formToJSON = elements => {
+    [].reduce.call(elements, (data, element) => {
+      if (isValidElement(element) && isValidValue(element)) {
+        data[element.name] = element.value;
+      }
+      return data;
+    }, {});
+  }
+
   // end: helper functions
   // ---------------------
 
-  submitForm(event) {
+  submit(event) {
     event.preventDefault();
-    // capture fields
-    const guests = document.getElementById('guests');
-    const elements = guests.querySelectorAll('input');
-    const entries = [...elements];
-    // check for valid elements
-    const isValidElement = element => {
-      return element.name && element.value;
-    };
-    const isValidValue = element => {
-      return (!['radio'].includes(element.type) || element.checked);
-    };
-    const formToJSON = elements =>
-      [].reduce.call(elements, (data, element) => {
-        if (isValidElement(element) && isValidValue(element)) {
-          data[element.name] = element.value;
-        }
-        return data;
-      }, {});
-    const singleJSONObj = formToJSON(entries);
-    let response = Object.entries(singleJSONObj).reduce((object, [key, value]) => {
-      let [name, number] = key.match(/\D+|\d+$/g);
-      object[number] = { ...(object[number] || {}), [name]: value }
-      return object;
-    }, {});
-    const dataToSubmit = Object.values(response);
-    // firebase entry
-    const newRSVPRef = this.rsvpRef.push();
-    newRSVPRef.set(dataToSubmit);
-    // for testing!
-    // console.log(JSON.stringify(dataToSubmit));
-    // ---------------------
-    this.startOver();
+    event.stopPropagation();
+
+    if (this.formTarget.checkValidity() === false) {
+    }
+
+    this.formTarget.classList.add('was-validated');
+
+
+    // // capture fields
+    // const guests = document.getElementById('guests');
+    // const elements = guests.querySelectorAll('input');
+    // const entries = [...elements];
+    // // check for valid elements
+    // const isValidElement = element => {
+    //   return element.name && element.value;
+    // };
+    // const isValidValue = element => {
+    //   return (!['radio'].includes(element.type) || element.checked);
+    // };
+    //
+    // const singleJSONObj = this.formToJSON(entries);
+    // let response = Object.entries(singleJSONObj).reduce((object, [key, value]) => {
+    //   let [name, number] = key.match(/\D+|\d+$/g);
+    //   object[number] = { ...(object[number] || {}), [name]: value }
+    //   return object;
+    // }, {});
+    // const dataToSubmit = Object.values(response);
+    // // firebase entry
+    // const newRSVPRef = this.rsvpRef.push();
+    // newRSVPRef.set(dataToSubmit);
+    // // for testing!
+    // // console.log(JSON.stringify(dataToSubmit));
+    // // ---------------------
+    //
+    // this.startOver();
   }
 }
