@@ -1,5 +1,5 @@
 import { Controller } from 'stimulus'
-import firebase from '../firebase';
+import firebase from '../../../firebase';
 import Swiper from "swiper";
 require("firebase/firestore");
 

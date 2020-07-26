@@ -486,21 +486,19 @@ p {
 
 // RSVP
 
-#rsvpForm {
+.rsvp {
   font-size: 1.35rem;
 
-  .form-group {
-
-  }
-
-  input[type='text'],
-  textarea {
+  .form-control {
     border: solid white 2px;
     border-radius: 0;
     background: transparent;
     color: white;
     font-size: 1.35rem;
+  }
 
+  input[type='text'],
+  textarea {
     &::placeholder {
       color: white;
     }
@@ -520,6 +518,10 @@ p {
       color: $blue;
       background-color: white;
     }
+  }
+
+  select option {
+    color: $blue;
   }
 }
 

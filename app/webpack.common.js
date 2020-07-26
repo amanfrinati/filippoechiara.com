@@ -9,13 +9,12 @@ module.exports = {
   entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, 'dist'),
-    // filename: '[name].[chunkhash].js'
-    filename: 'bundle.js'
+    filename: '[name].[chunkhash].js'
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
@@ -52,6 +51,14 @@ module.exports = {
         ]
       },
       {
+        test: /\.html$/,
+        use: [
+          {
+            loader: "html-loader"
+          }
+        ]
+      },
+      {
         // Apply rule for fonts files
         test: /\.(woff|woff2|ttf|otf|eot)$/,
         use: [
@@ -77,13 +84,6 @@ module.exports = {
           }
         ]
       },
-      // {
-      //   test: /\.(png|jpe?g|gif)$/i,
-      //   loader: 'file-loader',
-      //   options: {
-      //     outputPath: 'assets/images',
-      //   },
-      // },
       {
         // Now we apply rule for images
         test: /\.(png|jpe?g|gif|svg)$/,
@@ -105,33 +105,20 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      // filename: 'style.[contenthash].css',
-      filename: 'bundle.css',
+      filename: 'style.[contenthash].css',
     }),
     new CopyPlugin({
       patterns: [
-        { from: "src/assets/images", to: "images" },
-        { from: "src/assets/videos", to: "videos" },
-    //     // { from: "src/assets/icons", to: "icons" },
-    //     // { from: "src/assets/site.webmanifest", to: "site.webmanifest" },
-    //     {
-    //       from: "src/index.html",
-    //       to: "index.html",
-    //     },
-      ],
+        { from: "src/assets/icons", to: "icons" },
+        { from: "src/browserconfig.xml", to: "browserconfig.xml" },
+        { from: "src/site.webmanifest", to: "site.webmanifest" }
+      ]
     }),
     new HtmlWebpackPlugin({
-      inject: false,
-      hash: true,
       template: './src/index.html',
       filename: 'index.html'
     }),
-    // new WebpackMd5Hash()
+    new WebpackMd5Hash(),
     require('autoprefixer')
-  ],
-  resolve: {
-    alias: {
-      vue: 'vue/dist/vue.js'
-    }
-  }
+  ]
 };

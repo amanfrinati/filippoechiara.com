@@ -5,24 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Filippo & Chiara | 10 Ottobre 2020</title>
     <meta name="Description" content="Filippo & Chiara annunciano con gioia il loro matrimonio Sabato 10 Ottobre 2020 alle ore 11:00 nella Chiesa dei Santi Filippo e Giacomo, piazza Eremitani 9, Padova ">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/icons/favicon-16x16.png">
-    <link rel="manifest" href="images/icons/site.webmanifest">
-    <link rel="mask-icon" href="images/icons/safari-pinned-tab.svg" color="#5bbad5">
-    <link rel="shortcut icon" href="images/icons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/icons/favicon.ico">
     <meta name="apple-mobile-web-app-title" content="Filippo &amp; Chiara">
     <meta name="application-name" content="Filippo &amp; Chiara">
     <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="msapplication-config" content="images/icons/browserconfig.xml">
+    <meta name="msapplication-config" content="browserconfig.xml">
     <meta name="theme-color" content="#20244d">
-    <link rel="stylesheet" href="bundle.css">
-    <script src="bundle.js"></script>
   </head>
   <body>
     <main>
       <section class="d-flex logo-landing">
-        <img src="images/IOIO_CF_light.svg"
+        <img src="./assets/images/IOIO_CF_light.svg"
              class="logo-fullpage"
              alt="Filippo e Chiara 10 Ottobre 2020"/>
       </section>
@@ -77,7 +75,7 @@
                 <div class="container description-chiara-content">
                   <div class="row">
                     <div class="col-10 offset-1 col offset-md-2 col-md-8 offset-lg-3 col-lg-6">
-                      <img src="images/IO_chiara.svg" alt="IO Chiara" class="logo-name"/>
+                      <img src="./assets/images/IO_chiara.svg" alt="IO Chiara" class="logo-name"/>
                     </div>
                   </div>
                   <div class="row">
@@ -128,7 +126,7 @@
                 <div class="container description-filippo-content">
                   <div class="row">
                     <div class="col-10 offset-1 col offset-md-2 col-md-8 offset-lg-3 col-lg-6">
-                      <img src="images/IO_filippo.svg" alt="IO Filippo" class="logo-name"/>
+                      <img src="./assets/images/IO_filippo.svg" alt="IO Filippo" class="logo-name"/>
                     </div>
                   </div>
                   <div class="row">
@@ -275,8 +273,8 @@
         </div>
         <div class="video-container">
           <video id="video-villa-gritti" playsinline autoplay muted loop>
-            <source src="videos/villa-gritti_720p.webm" type="video/webm" />
-            <source src="videos/villa-gritti_720p.mp4" type="video/mp4" />
+            <source src="./assets/videos/villa-gritti_720p.webm" type="video/webm" />
+            <source src="./assets/videos/villa-gritti_720p.mp4" type="video/mp4" />
             <p>To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
           </video>
         </div>
@@ -358,12 +356,12 @@
           </div>
 
           <div class="ba-slider mt-5">
-            <img src="images/maldive.jpg" alt="Atollo delle Maldive">
+            <img src="./assets/images/maldive.jpg" alt="Atollo delle Maldive">
             <div class="resize">
-              <img srcset="images/bangkok_1x.jpg 960w,
-                           images/bangkok_2x.jpg 1920w,
-                           images/bangkok_4x.jpg 3840w"
-                   src="images/bangkok_1x.jpg"
+              <img srcset="./assets/images/bangkok_1x.jpg 960w,
+                           ./assets/images/bangkok_2x.jpg 1920w,
+                           ./assets/images/bangkok_4x.jpg 3840w"
+                   src="./assets/images/bangkok_1x.jpg"
                    alt="Una bella vista di Bangkok">
             </div>
 <!--            sizes="(max-width: 600px) 480px, 800px"-->
@@ -378,130 +376,132 @@
             <div class="col offset-md-2 col-md-8 offset-lg-3 col-lg-6">
               <h2>RSVP</h2>
 
-              <form id="rsvpForm"
-                    method="post"
-                    data-controller="rsvp"
-                    data-target="rsvp.form"
-                    data-action="submit->rsvp#submit"
-                    novalidate>
-                <div class="form-group">
-                  <input type="text"
-                         required
-                         name="fullName"
-                         class="form-control"
-                         placeholder="Come ti chiami?">
-                  <!--                                 data-action="onblur->rsvp#checkValue">-->
-                  <div class="invalid-feedback">
-                    Per favore, dicci almeno come ti chiami 😅
-                  </div>
-                </div>
+              <div id="rsvpFormContainer"></div>
 
-                <div class="form-group">
-                  <div class="form-check">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="attendanceOptions" id="attendanceYes" value="1" data-action="change->rsvp#attending" data-attending-value="1" required>
-                      <label class="form-check-label" for="attendanceYes">😊 Ci sarò!</label>
-                      <div class="invalid-feedback">
-                        Per favore, dicci almeno come ti chiami 😅
-                      </div>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="attendanceOptions" id="attendanceNo" value="0" data-action="change->rsvp#attending" data-attending-value="0" required>
-                      <label class="form-check-label" for="attendanceNo">😔 Purtroppo devo saltare il matrimonio dell'anno..</label>
-                      <div class="invalid-feedback">
-                        Per favore, dicci almeno come ti chiami 😅
-                      </div>
-                    </div>
-                  </div>
-                </div>
+<!--              <form id="rsvpForm"-->
+<!--                    method="post"-->
+<!--                    data-controller="rsvp"-->
+<!--                    data-target="rsvp.form"-->
+<!--                    data-action="submit->rsvp#submit"-->
+<!--                    novalidate>-->
+<!--                <div class="form-group">-->
+<!--                  <input type="text"-->
+<!--                         required-->
+<!--                         name="fullName"-->
+<!--                         class="form-control"-->
+<!--                         placeholder="Come ti chiami?">-->
+<!--                  &lt;!&ndash;                                 data-action="onblur->rsvp#checkValue">&ndash;&gt;-->
+<!--                  <div class="invalid-feedback">-->
+<!--                    Per favore, dicci almeno come ti chiami 😅-->
+<!--                  </div>-->
+<!--                </div>-->
 
-                <div class="d-none" data-target="rsvp.guestOptions">
-                  <div class="form-group">
-
-                  </div>
-                </div>
-
-
-                <div class="d-none" data-target="rsvp.message">
-                  <div class="form-group">
-                    <textarea class="form-control" id="message" name="message" placeholder="Vuoi lasciarci un messaggio?"></textarea>
-                  </div>
-                </div>
-
-<!--                <fieldset>-->
-<!--                  <div class="message d-none"></div>-->
-<!--                  <div class="d-none" data-target="rsvp.templateRow">-->
-
-<!--                    <div class="display-flex-columns">-->
-<!--                      <input type="hidden" name="id">-->
-
-<!--                      <span class="add-remove">-->
-<!--                        <a data-action="click->rsvp#add" class="btn btn__add-guest">-->
-<!--                          <span class="icon-plus"></span>-->
-<!--                        </a>-->
-<!--                        <a data-action="click->rsvp#retract" class="btn btn__remove-guest">-->
-<!--                          <span class="icon-minus"></span>-->
-<!--                        </a>-->
-<!--                      </span>-->
-
-<!--                      <div class="form-row">-->
-<!--                        <div class="col">-->
-<!--                          <input type="text"-->
-<!--                                 required-->
-<!--                                 name="fullName"-->
-<!--                                 class="form-control"-->
-<!--                                 placeholder="Come ti chiami?">-->
-<!--&lt;!&ndash;                                 data-action="onblur->rsvp#checkValue">&ndash;&gt;-->
-<!--                          <div class="invalid-feedback">-->
-<!--                            Per favore, dicci almeno come ti chiami 😅-->
-<!--                          </div>-->
-<!--                        </div>-->
+<!--                <div class="form-group">-->
+<!--                  <div class="form-check">-->
+<!--                    <div class="form-check">-->
+<!--                      <input class="form-check-input" type="radio" name="attendanceOptions" id="attendanceYes" value="1" data-action="change->rsvp#attending" data-attending-value="1" required>-->
+<!--                      <label class="form-check-label" for="attendanceYes">😊 Ci sarò!</label>-->
+<!--                      <div class="invalid-feedback">-->
+<!--                        Per favore, dicci almeno come ti chiami 😅-->
 <!--                      </div>-->
-
-<!--&lt;!&ndash;                      <label>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <input type="text" name="fullName" placeholder="First &amp; Last Name" data-action="onblur->rsvp#checkValue">&ndash;&gt;-->
-<!--&lt;!&ndash;                      </label>&ndash;&gt;-->
 <!--                    </div>-->
-
-<!--                    <div class="guestControls">-->
-<!--                      <div class="attendance my-3">-->
-<!--                        <div class="form-check form-check-inline">-->
-<!--                          <input class="form-check-input" type="radio" name="attendanceOptions" id="attendanceYes" value="1" data-action="click->rsvp#attending" data-attending-value="1" required>-->
-<!--                          <label class="form-check-label" for="attendanceYes">😊 Ci sarò!</label>-->
-<!--                        </div>-->
-<!--                        <div class="form-check form-check-inline">-->
-<!--                          <input class="form-check-input" type="radio" name="attendanceOptions" id="attendanceNo" value="0" data-action="click->rsvp#attending" data-attending-value="0" required>-->
-<!--                          <label class="form-check-label" for="attendanceNo">😔 Purtroppo devo saltare il matrimonio dell'anno..</label>-->
-<!--                        </div>-->
-
-<!--&lt;!&ndash;                        <label class="first">&ndash;&gt;-->
-<!--&lt;!&ndash;                          <input type="radio" name="attendance" value="1" data-action="click->rsvp#attending" data-attending-value="1" class="form-radio"> Will Attend</label>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <label><input type="radio" name="attendance" value="0" data-action="click->rsvp#attending" data-attending-value="0" class="form-radio"> Will Not Attend</label>&ndash;&gt;-->
+<!--                    <div class="form-check">-->
+<!--                      <input class="form-check-input" type="radio" name="attendanceOptions" id="attendanceNo" value="0" data-action="change->rsvp#attending" data-attending-value="0" required>-->
+<!--                      <label class="form-check-label" for="attendanceNo">😔 Purtroppo devo saltare il matrimonio dell'anno..</label>-->
+<!--                      <div class="invalid-feedback">-->
+<!--                        Per favore, dicci almeno come ti chiami 😅-->
 <!--                      </div>-->
-<!--                      <div class="d-none" data-target="rsvp.guestOptions">-->
-
-<!--                      </div>-->
-
-<!--&lt;!&ndash;                      <div class="mealOptions">&ndash;&gt;-->
-<!--&lt;!&ndash;                        <strong>Meal Choice:</strong> <br>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <label class="first"><input type="radio" name="mealChoice" value="salmon" class="form-radio"> Salmon</label>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <label><input type="radio" name="mealChoice" value="steak" class="form-radio"> Steak</a></label>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <label><input type="radio" name="mealChoice" value="kids" class="form-radio"> Kid's</a></label>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div class="small">&ndash;&gt;-->
-<!--&lt;!&ndash;                          <p><strong>Mustard Glazed Salmon</strong> <br> Buttermilk Mashed Potato, Cured Tomato, Pencil Asparagus,&ndash;&gt;-->
-<!--&lt;!&ndash;                            Beechwood Mushroom</p>&ndash;&gt;-->
-<!--&lt;!&ndash;                          <p><strong>Herb Crusted Strip Steak</strong> <br> Bacon Scallion Yukon Potato Hash, Broccolini and Baby&ndash;&gt;-->
-<!--&lt;!&ndash;                            Carrot, Braised Cipollini, Peppercorn Glaze</p>&ndash;&gt;-->
-<!--&lt;!&ndash;                          <p><strong>Kid's Menu</strong> <br> 10 years old or younger. Chicken Tenders with Fries. Sides include&ndash;&gt;-->
-<!--&lt;!&ndash;                            carrots and celery sticks.</p>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                      </div>&ndash;&gt;-->
 <!--                    </div>-->
 <!--                  </div>-->
-<!--                  <div data-target="rsvp.guests"></div>-->
-<!--                </fieldset>-->
-                <button class="btn btn-primary" type="submit">Conferma!</button>
-              </form>
+<!--                </div>-->
+
+<!--                <div class="d-none" data-target="rsvp.guestOptions">-->
+<!--                  <div class="form-group">-->
+
+<!--                  </div>-->
+<!--                </div>-->
+
+
+<!--                <div class="d-none" data-target="rsvp.message">-->
+<!--                  <div class="form-group">-->
+<!--                    <textarea class="form-control" id="message" name="message" placeholder="Vuoi lasciarci un messaggio?"></textarea>-->
+<!--                  </div>-->
+<!--                </div>-->
+
+<!--&lt;!&ndash;                <fieldset>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <div class="message d-none"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <div class="d-none" data-target="rsvp.templateRow">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                    <div class="display-flex-columns">&ndash;&gt;-->
+<!--&lt;!&ndash;                      <input type="hidden" name="id">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                      <span class="add-remove">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <a data-action="click->rsvp#add" class="btn btn__add-guest">&ndash;&gt;-->
+<!--&lt;!&ndash;                          <span class="icon-plus"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <a data-action="click->rsvp#retract" class="btn btn__remove-guest">&ndash;&gt;-->
+<!--&lt;!&ndash;                          <span class="icon-minus"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                      </span>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                      <div class="form-row">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="col">&ndash;&gt;-->
+<!--&lt;!&ndash;                          <input type="text"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 required&ndash;&gt;-->
+<!--&lt;!&ndash;                                 name="fullName"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 class="form-control"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 placeholder="Come ti chiami?">&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                 data-action="onblur->rsvp#checkValue">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                          <div class="invalid-feedback">&ndash;&gt;-->
+<!--&lt;!&ndash;                            Per favore, dicci almeno come ti chiami 😅&ndash;&gt;-->
+<!--&lt;!&ndash;                          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                      </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;                      <label>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                        <input type="text" name="fullName" placeholder="First &amp; Last Name" data-action="onblur->rsvp#checkValue">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                      </label>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                    <div class="guestControls">&ndash;&gt;-->
+<!--&lt;!&ndash;                      <div class="attendance my-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="form-check form-check-inline">&ndash;&gt;-->
+<!--&lt;!&ndash;                          <input class="form-check-input" type="radio" name="attendanceOptions" id="attendanceYes" value="1" data-action="click->rsvp#attending" data-attending-value="1" required>&ndash;&gt;-->
+<!--&lt;!&ndash;                          <label class="form-check-label" for="attendanceYes">😊 Ci sarò!</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="form-check form-check-inline">&ndash;&gt;-->
+<!--&lt;!&ndash;                          <input class="form-check-input" type="radio" name="attendanceOptions" id="attendanceNo" value="0" data-action="click->rsvp#attending" data-attending-value="0" required>&ndash;&gt;-->
+<!--&lt;!&ndash;                          <label class="form-check-label" for="attendanceNo">😔 Purtroppo devo saltare il matrimonio dell'anno..</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;                        <label class="first">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                          <input type="radio" name="attendance" value="1" data-action="click->rsvp#attending" data-attending-value="1" class="form-radio"> Will Attend</label>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                        <label><input type="radio" name="attendance" value="0" data-action="click->rsvp#attending" data-attending-value="0" class="form-radio"> Will Not Attend</label>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                      </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <div class="d-none" data-target="rsvp.guestOptions">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                      </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;                      <div class="mealOptions">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                        <strong>Meal Choice:</strong> <br>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                        <label class="first"><input type="radio" name="mealChoice" value="salmon" class="form-radio"> Salmon</label>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                        <label><input type="radio" name="mealChoice" value="steak" class="form-radio"> Steak</a></label>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                        <label><input type="radio" name="mealChoice" value="kids" class="form-radio"> Kid's</a></label>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                        <div class="small">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                          <p><strong>Mustard Glazed Salmon</strong> <br> Buttermilk Mashed Potato, Cured Tomato, Pencil Asparagus,&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                            Beechwood Mushroom</p>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                          <p><strong>Herb Crusted Strip Steak</strong> <br> Bacon Scallion Yukon Potato Hash, Broccolini and Baby&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                            Carrot, Braised Cipollini, Peppercorn Glaze</p>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                          <p><strong>Kid's Menu</strong> <br> 10 years old or younger. Chicken Tenders with Fries. Sides include&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                            carrots and celery sticks.</p>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                        </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                      </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <div data-target="rsvp.guests"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </fieldset>&ndash;&gt;-->
+<!--                <button class="btn btn-primary" type="submit">Conferma!</button>-->
+<!--              </form>-->
             </div>
           </div>
         </div>
