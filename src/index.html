@@ -360,8 +360,13 @@
           <div class="ba-slider mt-5">
             <img src="images/maldive.jpg" alt="Atollo delle Maldive">
             <div class="resize">
-              <img src="images/bangkok.jpg" alt="Una bella vista di Bangkok">
+              <img srcset="images/bangkok_1x.jpg 960w,
+                           images/bangkok_2x.jpg 1920w,
+                           images/bangkok_4x.jpg 3840w"
+                   src="images/bangkok_1x.jpg"
+                   alt="Una bella vista di Bangkok">
             </div>
+<!--            sizes="(max-width: 600px) 480px, 800px"-->
             <span class="handle"></span>
           </div>
         </div>
