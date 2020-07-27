@@ -6,7 +6,6 @@
 @import "fonts";
 @import "imageComparison";
 @import "variables";
-@import "rsvpForm";
 
 body {
   font-family: $mada, sans-serif;
@@ -37,6 +36,7 @@ h3 {
 
 p {
   line-height: 1.35;
+  font-size: 1.35rem;
 }
 
 .sticky-container {
@@ -321,10 +321,6 @@ p {
   position: relative;
   background-color: rgba(0, 0, 0, 0.4);
 
-  p {
-    font-size: 1.35rem;
-  }
-
   .video-container {
     position: absolute;
     overflow: hidden;
@@ -352,10 +348,6 @@ p {
 .wedding-list {
   min-height: unset;
   padding: 5rem 0;
-
-  p {
-    font-size: 1.35rem;
-  }
 
   .swiper-container {
     width: 100%;
@@ -478,10 +470,6 @@ p {
   h2 {
     font-size: 2.5rem;
   }
-
-  p {
-    font-size: 1.35rem;
-  }
 }
 
 // RSVP
@@ -497,12 +485,12 @@ p {
     font-size: 1.35rem;
   }
 
-  input[type='text'],
-  textarea {
-    &::placeholder {
-      color: white;
-    }
-  }
+  //input[type='text'],
+  //textarea {
+  //  &::placeholder {
+  //    color: white;
+  //  }
+  //}
 
   textarea {
     font-style: italic;
