@@ -41,17 +41,60 @@ export class RSVPForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    event.stopPropagation();
 
-    this.db
-      .collection('rsvps')
-      .doc(RandomString())
-      .set(this.state)
-      .then(() => {
-        this.showAlert(true, 'Grazie di aver confermato! Ti aspettiamo 🥂', 'success')
-      })
-      .catch((error) => {
-        this.showAlert(true, `Oh no! Il messaggio non è stato inviato a causa di un errore 😱 ${error.toString()}`, 'warning')
-      });
+    this.form.classList.add('was-validated');
+
+    if (this.validateForm(this.form)) {
+      try {
+        this.db
+          .collection('rsvps')
+          .doc(RandomString())
+          .set({
+            allergies: this.state.allergies || '',
+            attendanceOption: this.state.attendanceOption,
+            email: this.state.email,
+            fullName: this.state.fullName,
+            message: this.state.message || '',
+            numberOfAdults: this.state.numberOfAdults || 0,
+            numberOfChildren: this.state.numberOfChildren || 0,
+            createdAt: new Date()
+          })
+          .then(() => {
+            this.showAlert(true, 'Grazie di aver confermato! Ti aspettiamo 🥂', true);
+            this.resetForm();
+          })
+          .catch((error) => {
+            this.showAlert(true, `Oh no! Il messaggio non è stato inviato a causa di un errore 😱 ${error.toString()}`, false);
+          });
+      } catch (e) {
+        this.showAlert(true, `Oh no! Il messaggio non è stato inviato a causa di un errore 😱 ${e.toString()}`, false);
+      }
+    }
+  }
+
+  validateForm(form) {
+    if (this.state.attendanceOption) {
+      return form.checkValidity() &&
+        this.state.numberOfAdults &&
+        this.state.numberOfChildren;
+    } else {
+      return form.checkValidity();
+    }
+  }
+
+  resetForm() {
+    this.setState({
+      allergies: undefined,
+      attendanceOption: undefined,
+      email: undefined,
+      fullName: undefined,
+      message: undefined,
+      numberOfAdults: undefined,
+      numberOfChildren: undefined,
+    })
+    this.form.classList.remove('was-validated');
+    this.form.reset();
   }
 
   showAlert(show, message, result) {
@@ -71,6 +114,7 @@ export class RSVPForm extends Component {
               method="post"
               noValidate
               onSubmit={this.handleSubmit}
+              ref={(el) => this.form = el}
         >
           <div className="form-group">
             <input type="text"
@@ -82,6 +126,19 @@ export class RSVPForm extends Component {
             />
             <div className="invalid-feedback">
               Per favore, dicci almeno come ti chiami 😅
+            </div>
+          </div>
+
+          <div className="form-group">
+            <input type="email"
+                   required
+                   name="email"
+                   className="form-control"
+                   placeholder="Qual è la tua email?"
+                   onChange={this.handleInputChange}
+            />
+            <div className="invalid-feedback">
+              Lasciaci una mail, così ti mandiamo il messaggio di riepilogo della conferma! Promettiamo di non salvarlo e di non mandare SPAM 😉
             </div>
           </div>
 
@@ -98,7 +155,7 @@ export class RSVPForm extends Component {
                 />
                 <label className="form-check-label" htmlFor="attendanceYes">😊 Ci sarò!</label>
                 <div className="invalid-feedback">
-                  Per favore, dicci almeno come ti chiami 😅
+                  Per favore, scegli una delle due opzioni 😬
                 </div>
               </div>
               <div className="form-check">
@@ -113,7 +170,7 @@ export class RSVPForm extends Component {
                 <label className="form-check-label" htmlFor="attendanceNo">😔 Purtroppo devo saltare il matrimonio
                   dell'anno..</label>
                 <div className="invalid-feedback">
-                  Per favore, dicci almeno come ti chiami 😅
+                  Per favore, scegli una delle due opzioni 😬
                 </div>
               </div>
             </div>
@@ -125,17 +182,23 @@ export class RSVPForm extends Component {
             >
               <select className="form-control"
                       name="numberOfAdults"
+                      defaultValue=""
+                      required
               >
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
+                <option disabled value="">Quanti adulti ci sono?</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
               </select>
+              <div className="invalid-feedback">
+                Per favore, scegli il numero di adulti 😬
+              </div>
             </div>
 
             <div className="form-group"
@@ -143,17 +206,23 @@ export class RSVPForm extends Component {
             >
               <select className="form-control"
                       name="numberOfChildren"
+                      defaultValue=""
+                      required
               >
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
+                <option disabled value="">Quanti bambini ci sono?</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
               </select>
+              <div className="invalid-feedback">
+                Per favore, scegli il numero di bambini 😬
+              </div>
             </div>
 
             <div className="form-group"
@@ -178,7 +247,7 @@ export class RSVPForm extends Component {
           <Alert show={this.state.rsvpResult.show}
                  variant={this.state.rsvpResult.variant}
                  dismissible
-                 onClose={() => this.showAlert(false, '', '')}
+                 onClose={() => this.showAlert(false, '', true)}
           >
             {this.state.rsvpResult.message}
           </Alert>
@@ -191,5 +260,5 @@ export class RSVPForm extends Component {
 
 ReactDOM.render(
   <RSVPForm />,
-  document.getElementById("rsvpFormContainer")
+  document.getElementById("rsvpForm")
 );
