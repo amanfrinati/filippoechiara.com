@@ -43,10 +43,9 @@ export class RSVPForm extends Component {
     event.preventDefault();
     event.stopPropagation();
 
-    const form = document.getElementById('rsvpForm')
-    form.classList.add('was-validated');
+    this.form.classList.add('was-validated');
 
-    if (this.validateForm(form)) {
+    if (this.validateForm(this.form)) {
       try {
         this.db
           .collection('rsvps')
@@ -59,9 +58,11 @@ export class RSVPForm extends Component {
             message: this.state.message || '',
             numberOfAdults: this.state.numberOfAdults || 0,
             numberOfChildren: this.state.numberOfChildren || 0,
+            createdAt: new Date()
           })
           .then(() => {
-            this.showAlert(true, 'Grazie di aver confermato! Ti aspettiamo 🥂', true)
+            this.showAlert(true, 'Grazie di aver confermato! Ti aspettiamo 🥂', true);
+            this.resetForm();
           })
           .catch((error) => {
             this.showAlert(true, `Oh no! Il messaggio non è stato inviato a causa di un errore 😱 ${error.toString()}`, false);
@@ -82,6 +83,20 @@ export class RSVPForm extends Component {
     }
   }
 
+  resetForm() {
+    this.setState({
+      allergies: undefined,
+      attendanceOption: undefined,
+      email: undefined,
+      fullName: undefined,
+      message: undefined,
+      numberOfAdults: undefined,
+      numberOfChildren: undefined,
+    })
+    this.form.classList.remove('was-validated');
+    this.form.reset();
+  }
+
   showAlert(show, message, result) {
     this.setState({
       rsvpResult: {
@@ -97,9 +112,9 @@ export class RSVPForm extends Component {
       <div>
         <form className="rsvp"
               method="post"
-              id="rsvpForm"
               noValidate
               onSubmit={this.handleSubmit}
+              ref={(el) => this.form = el}
         >
           <div className="form-group">
             <input type="text"
@@ -168,6 +183,7 @@ export class RSVPForm extends Component {
               <select className="form-control"
                       name="numberOfAdults"
                       defaultValue=""
+                      required
               >
                 <option disabled value="">Quanti adulti ci sono?</option>
                 <option value="1">1</option>
@@ -191,6 +207,7 @@ export class RSVPForm extends Component {
               <select className="form-control"
                       name="numberOfChildren"
                       defaultValue=""
+                      required
               >
                 <option disabled value="">Quanti bambini ci sono?</option>
                 <option value="1">1</option>
@@ -243,5 +260,5 @@ export class RSVPForm extends Component {
 
 ReactDOM.render(
   <RSVPForm />,
-  document.getElementById("rsvpFormContainer")
+  document.getElementById("rsvpForm")
 );
