@@ -1,11 +1,11 @@
-@import "~bootstrap";
-@import "~swiper/css/swiper.css";
+@import '~bootstrap';
+@import '~swiper/css/swiper.css';
 // @import "./skewed";
 //@import "./slider";
 
-@import "fonts";
-@import "imageComparison";
-@import "variables";
+@import 'fonts';
+@import 'imageComparison';
+@import 'variables';
 
 body {
   font-family: $mada, sans-serif;
@@ -173,7 +173,7 @@ p {
   }
 
   .madonna-corona {
-    background-image: url("../assets/images/quotes_p.jpg");
+    background-image: url('../assets/images/quotes_p.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     opacity: 0;
@@ -201,7 +201,7 @@ p {
   left: 0;
   z-index: 2;
 
-  & [class*="border-"] {
+  & [class*='border-'] {
     background-color: #fff;
     height: 102%;
     position: absolute;
@@ -231,7 +231,8 @@ p {
     font-weight: 700;
   }
 
-  h1, .h1 {
+  h1,
+  .h1 {
     padding: 4rem 0;
   }
 }
@@ -272,15 +273,16 @@ p {
     overflow: hidden;
     background-color: $blue;
 
-    .border-left, .border-right {
+    .border-left,
+    .border-right {
       background-color: $gray-10;
     }
 
     .eremitani-img {
-      background-image: url("../assets/images/foto_eremitani_4k.jpg");
+      background-image: url('../assets/images/foto_eremitani_4k.jpg');
       background-repeat: no-repeat;
       background-size: cover;
-      background-position: center;
+      background-position: center top;
       transform: scale(3);
       will-change: transform;
       height: 65vh;
@@ -295,7 +297,8 @@ p {
     }
   }
 
-  #save-the-date, .save-the-date p {
+  #save-the-date,
+  .save-the-date p {
     padding: 3rem 0;
     text-align: center;
     font-size: 2rem;
@@ -474,6 +477,58 @@ p {
 
 // RSVP
 
+.rsvp-section {
+  position: relative;
+}
+
+.rsvp-hero-section.sticky-container {
+  position: relative;
+  z-index: 2;
+  margin-top: 0;
+  height: 100vh;
+}
+
+.rsvp-hero {
+  width: 100%;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-image: url('../assets/images/rsvp_1920w.jpg');
+  background-size: cover;
+  background-position: center top;
+
+  @media screen and (min-width: 1920px) {
+    background-image: url('../assets/images/rsvp_2576w.jpg');
+  }
+
+  @media screen and (max-width: 1920px) {
+    background-image: url('../assets/images/rsvp_1920w.jpg');
+  }
+
+  @media screen and (max-width: 1440px) {
+    background-image: url('../assets/images/rsvp_1440w.jpg');
+  }
+
+  @media screen and (max-width: 960px) {
+    background-image: url('../assets/images/rsvp_960w.jpg');
+  }
+}
+
+.rsvp-section-form.sticky-container {
+  position: relative;
+  margin-top: -85vh;
+  height: 150vh;
+  min-height: calc(100vh + 900px);
+  z-index: 1;
+
+  .sticky-content {
+    background-color: $blue;
+
+    .container {
+      margin-top: 20vh;
+    }
+  }
+}
+
 .rsvp {
   font-size: 1.35rem;
 
@@ -518,7 +573,7 @@ p {
 .final-section {
   min-height: unset;
   height: 100vh;
-  background-image: url("../assets/images/foto_finale_p_2x.jpg");
+  background-image: url('../assets/images/foto_finale_p_2x.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 
