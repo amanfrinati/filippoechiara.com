@@ -51,36 +51,38 @@ export class RSVPForm extends Component {
           .collection('rsvps')
           .doc(RandomString())
           .set({
-            allergies: this.state.allergies || '',
+            // allergies: this.state.allergies || '',
             attendanceOption: this.state.attendanceOption,
             email: this.state.email,
             fullName: this.state.fullName,
-            message: this.state.message || '',
-            numberOfAdults: this.state.numberOfAdults || 0,
-            numberOfChildren: this.state.numberOfChildren || 0,
+            // message: this.state.message || '',
+            // numberOfAdults: this.state.numberOfAdults || 0,
+            // numberOfChildren: this.state.numberOfChildren || 0,
             createdAt: new Date()
           })
           .then(() => {
-            this.showAlert(true, 'Grazie di aver confermato! Ti aspettiamo 🥂', true);
+            this.showAlert(true, 'Grazie di aver confermato! Ti aspettiamo', true);
             this.resetForm();
           })
           .catch((error) => {
-            this.showAlert(true, `Oh no! Il messaggio non è stato inviato a causa di un errore 😱 ${error.toString()}`, false);
+            this.showAlert(true, `Oh no! Il messaggio non è stato inviato a causa di un errore [${error.toString()}]`, false);
           });
       } catch (e) {
-        this.showAlert(true, `Oh no! Il messaggio non è stato inviato a causa di un errore 😱 ${e.toString()}`, false);
+        this.showAlert(true, `Oh no! Il messaggio non è stato inviato a causa di un errore [${e.toString()}]`, false);
       }
     }
   }
 
   validateForm(form) {
-    if (this.state.attendanceOption) {
-      return form.checkValidity() &&
-        this.state.numberOfAdults &&
-        this.state.numberOfChildren;
-    } else {
-      return form.checkValidity();
-    }
+    // if (this.state.attendanceOption) {
+    //   return form.checkValidity() &&
+    //     this.state.numberOfAdults &&
+    //     this.state.numberOfChildren;
+    // } else {
+    //   return form.checkValidity();
+    // }
+
+    return form.checkValidity();
   }
 
   resetForm() {
@@ -117,15 +119,15 @@ export class RSVPForm extends Component {
               ref={(el) => this.form = el}
         >
           <div className="form-group">
-            <input type="text"
-                   required
-                   name="fullName"
-                   className="form-control"
-                   placeholder="Come ti chiami?"
-                   onChange={this.handleInputChange}
+            <textarea type="text"
+                      required
+                      name="fullName"
+                      className="form-control"
+                      placeholder="Per chi vuoi confermare?"
+                      onChange={this.handleInputChange}
             />
             <div className="invalid-feedback">
-              Per favore, dicci almeno come ti chiami 😅
+              Per favore, inserisci i nomi dei partecipanti
             </div>
           </div>
 
@@ -138,7 +140,7 @@ export class RSVPForm extends Component {
                    onChange={this.handleInputChange}
             />
             <div className="invalid-feedback">
-              Lasciaci una mail, così ti mandiamo il messaggio di riepilogo della conferma! Promettiamo di non salvarlo e di non mandare SPAM 😉
+              Lasciaci una mail, così ti manderemo il messaggio di riepilogo della conferma! Promettiamo di non salvarlo e di non mandare SPAM
             </div>
           </div>
 
@@ -153,9 +155,9 @@ export class RSVPForm extends Component {
                        onChange={(e) => this.attendanceOptionChanged(e)}
                        required
                 />
-                <label className="form-check-label" htmlFor="attendanceYes">😊 Ci sarò!</label>
+                <label className="form-check-label" htmlFor="attendanceYes">Ci sarò!</label>
                 <div className="invalid-feedback">
-                  Per favore, scegli una delle due opzioni 😬
+                  Per favore, scegli una delle due opzioni
                 </div>
               </div>
               <div className="form-check">
@@ -167,78 +169,77 @@ export class RSVPForm extends Component {
                        onChange={(e) => this.attendanceOptionChanged(e)}
                        required
                 />
-                <label className="form-check-label" htmlFor="attendanceNo">😔 Purtroppo devo saltare il matrimonio
-                  dell'anno..</label>
+                <label className="form-check-label" htmlFor="attendanceNo">Purtroppo non riuscirò a venire</label>
                 <div className="invalid-feedback">
-                  Per favore, scegli una delle due opzioni 😬
+                  Per favore, scegli una delle due opzioni
                 </div>
               </div>
             </div>
           </div>
 
-          <div className={this.state.attendanceOption ? 'd-block' : 'd-none'}>
-            <div className="form-group"
-                 onChange={this.handleInputChange}
-            >
-              <select className="form-control"
-                      name="numberOfAdults"
-                      defaultValue=""
-                      required
-              >
-                <option disabled value="">Quanti adulti ci sono?</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-              </select>
-              <div className="invalid-feedback">
-                Per favore, scegli il numero di adulti 😬
-              </div>
-            </div>
+          {/*<div className={this.state.attendanceOption ? 'd-block' : 'd-none'}>*/}
+          {/*  <div className="form-group"*/}
+          {/*       onChange={this.handleInputChange}*/}
+          {/*  >*/}
+          {/*    <select className="form-control"*/}
+          {/*            name="numberOfAdults"*/}
+          {/*            defaultValue=""*/}
+          {/*            required*/}
+          {/*    >*/}
+          {/*      <option disabled value="">Quanti adulti ci sono?</option>*/}
+          {/*      <option value="1">1</option>*/}
+          {/*      <option value="2">2</option>*/}
+          {/*      <option value="3">3</option>*/}
+          {/*      <option value="4">4</option>*/}
+          {/*      <option value="5">5</option>*/}
+          {/*      <option value="6">6</option>*/}
+          {/*      <option value="7">7</option>*/}
+          {/*      <option value="8">8</option>*/}
+          {/*      <option value="9">9</option>*/}
+          {/*    </select>*/}
+          {/*    <div className="invalid-feedback">*/}
+          {/*      Per favore, scegli il numero di adulti 😬*/}
+          {/*    </div>*/}
+          {/*  </div>*/}
 
-            <div className="form-group"
-                 onChange={this.handleInputChange}
-            >
-              <select className="form-control"
-                      name="numberOfChildren"
-                      defaultValue=""
-                      required
-              >
-                <option disabled value="">Quanti bambini ci sono?</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-              </select>
-              <div className="invalid-feedback">
-                Per favore, scegli il numero di bambini 😬
-              </div>
-            </div>
+          {/*  <div className="form-group"*/}
+          {/*       onChange={this.handleInputChange}*/}
+          {/*  >*/}
+          {/*    <select className="form-control"*/}
+          {/*            name="numberOfChildren"*/}
+          {/*            defaultValue=""*/}
+          {/*            required*/}
+          {/*    >*/}
+          {/*      <option disabled value="">Quanti bambini ci sono?</option>*/}
+          {/*      <option value="1">1</option>*/}
+          {/*      <option value="2">2</option>*/}
+          {/*      <option value="3">3</option>*/}
+          {/*      <option value="4">4</option>*/}
+          {/*      <option value="5">5</option>*/}
+          {/*      <option value="6">6</option>*/}
+          {/*      <option value="7">7</option>*/}
+          {/*      <option value="8">8</option>*/}
+          {/*      <option value="9">9</option>*/}
+          {/*    </select>*/}
+          {/*    <div className="invalid-feedback">*/}
+          {/*      Per favore, scegli il numero di bambini 😬*/}
+          {/*    </div>*/}
+          {/*  </div>*/}
 
-            <div className="form-group"
-                 onChange={this.handleInputChange}
-            >
-              <textarea name="allergies"
-                        className="form-control"
-                        placeholder="Hai intolleranze o allergie da segnalarci?"
-                        onChange={this.handleInputChange}
-              />
-            </div>
-          </div>
+          {/*  <div className="form-group"*/}
+          {/*       onChange={this.handleInputChange}*/}
+          {/*  >*/}
+          {/*    <textarea name="allergies"*/}
+          {/*              className="form-control"*/}
+          {/*              placeholder="Hai intolleranze o allergie da segnalarci?"*/}
+          {/*              onChange={this.handleInputChange}*/}
+          {/*    />*/}
+          {/*  </div>*/}
+          {/*</div>*/}
 
-          <MessageArea
-            hide={this.state.attendanceOption === undefined}
-            handleChange={this.handleInputChange}/>
+          {/*<MessageArea*/}
+          {/*  hide={this.state.attendanceOption === undefined}*/}
+          {/*  handleChange={this.handleInputChange}/>*/}
 
           <button className="btn btn-primary" type="submit">Conferma!</button>
         </form>

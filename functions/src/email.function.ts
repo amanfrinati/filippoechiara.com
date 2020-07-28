@@ -13,8 +13,8 @@ const transporter = nodemailer.createTransport({
     pass: functions.config().email.password,
   },
   tls: {
-    rejectUnauthorized: false
-  }
+    rejectUnauthorized: false,
+  },
 });
 
 export const sendMailOnRSVPCreation = functions.firestore
@@ -23,52 +23,58 @@ export const sendMailOnRSVPCreation = functions.firestore
     const rsvp: any = snapshot.data();
 
     const mailOptions = {
-      from: `Modulo RSVP di Filippo e Chiara <${functions.config().email.sender}>`,
+      from: `Modulo RSVP di Filippo e Chiara <${
+        functions.config().email.sender
+      }>`,
       to: rsvp.email,
-      subject: "Grazie per aver confermato la tua partecipazione! 🎉",
+      subject: "Grazie per aver confermato la tua partecipazione!",
       html: `
         <p>
           Grazie ${rsvp.fullName},<br />
-          abbiamo ricevuto la conferma della tua partecipazione.</p>
-        <p>Nella conferma hai indicati i seguenti dati:</p>
+          abbiamo ricevuto il tuo RSVP.</p>
+        <p>Nella conferma hai indicato le seguenti informazioni:</p>
         <ul>
-          <li>Presenza confermata: <strong>${rsvp.attendanceOption ? 'Si' : 'No'}</strong></li>
-          <li>Numero di adulti: <strong>${rsvp.numberOfAdults}</strong></li>
-          <li>Numero di bambini: <strong>${rsvp.numberOfChildren}</strong></li>
-          <li>Allergie: <strong>${rsvp.allergies}</strong></li>
-          <li>Messaggio: <strong>${rsvp.message}</strong></li>
+          <li>Nomi: <strong>${rsvp.fullName}</strong></li>
+          <li>Email: <strong>${rsvp.email}</strong></li>
+          <li>Conferma presenza: <strong>${
+            rsvp.attendanceOption ? "Si" : "No"
+          }</strong></li>
         </ul>
-        <p>Ti ringraziamo di cuore per il tuo affetto e non vediamo l’ora di vederti presto.</p>
+        <p>A presto,</p>
         <p>Filippo e Chiara</p>
       `,
     };
 
     const mail2Options = {
-      from: `Modulo RSVP di Filippo e Chiara <${functions.config().email.sender}>`,
-      to: `<${functions.config().email.filippo}>,<${functions.config().email.chiara}>`,
-      subject: `🤖 Ehi! ${rsvp.fullName.toUpperCase()} ha confermato la sua partecipazione!`,
+      from: `Modulo RSVP di Filippo e Chiara <${
+        functions.config().email.sender
+      }>`,
+      to: `<${functions.config().email.filippo}>,<${
+        functions.config().email.chiara
+      }>`,
+      // to: `<${functions.config().email.alberto}>`,
+      subject: `E' stato aggiunto un nuovo RSVP`,
       html: `
         <p>
           Ciao,<br />
-          abbiamo ricevuto la conferma della partecipazione di <strong>${rsvp.fullName}</strong>.
+          è stato aggiunto un nuovo RSVP.
         </p>
-        <p>Nella conferma sono stati indicati i seguenti dati:</p>
+        <p>Nella conferma sono state indicate le seguenti informazioni:</p>
         <ul>
-          <li>Nome: <strong>${rsvp.fullName}</strong></li>
-          <li>Presenza confermata: <strong>${rsvp.attendanceOption ? 'Si' : 'No'}</strong></li>
-          <li>Numero di adulti: <strong>${rsvp.numberOfAdults}</strong></li>
-          <li>Numero di bambini: <strong>${rsvp.numberOfChildren}</strong></li>
-          <li>Allergie: <strong>${rsvp.allergies}</strong></li>
-          <li>Messaggio: <strong>${rsvp.message}</strong></li>
+          <li>Presenza confermata: <strong>${
+            rsvp.attendanceOption ? "Si" : "No"
+          }</strong></li>
+          <li>Nomi: <strong>${rsvp.fullName}</strong></li>
+          <li>Email: <strong>${rsvp.email}</strong></li>
         </ul>
-        <p>Your faithful robot</p>
+        <p>Il tuo modulo RSVP</p>
       `,
     };
 
     // returning result
     return Promise.all([
       transporter.sendMail(mailOptions),
-      transporter.sendMail(mail2Options)
+      transporter.sendMail(mail2Options),
     ])
       .then((res: any) => {
         console.log({ result: "ok", message: JSON.stringify(res) });
