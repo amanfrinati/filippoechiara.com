@@ -3,7 +3,6 @@ import gasp from 'gsap'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger.min'
 
 gasp.registerPlugin(ScrollTrigger)
-// gsap.registerPlugin(DrawSVGPlugin);
 
 $(document).ready(function () {
   // gasp.to('.swiper-container-descriptions .swiper-button', {
@@ -48,6 +47,17 @@ $(document).ready(function () {
       trigger: '.hero-cerimonia',
       start: 'top bottom-=10%',
       end: 'bottom center',
+      scrub: true
+    }
+  })
+
+  gasp.to('.video-bg', {
+    opacity: 0.5,
+    duration: 1,
+    scrollTrigger: {
+      trigger: '.video-text-container',
+      start: 'top bottom',
+      end: 'center center',
       scrub: true
     }
   })
