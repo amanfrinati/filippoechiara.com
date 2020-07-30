@@ -56,11 +56,61 @@ p {
 
 .logo-landing {
   background-color: $blue;
+
+  .logo-stick-container {
+    width: 100%;
+    height: 200vh;
+
+    .logo-stick-content {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+
+      .logo {
+        margin: auto;
+        width: 50%;
+      }
+    }
+  }
 }
 
-.logo-fullpage {
-  margin: auto;
-  width: 50%;
+.intro-together-sticky-container {
+  width: 100%;
+  height: 200vh;
+  overflow: hidden;
+
+  .intro-together-sticky-content {
+    position: sticky;
+    top: 0;
+
+    .intro-together {
+      width: 100%;
+      height: 100vh;
+      //margin-top: 100vh;
+      background-repeat: no-repeat;
+      background-image: url('../assets/images/together_v.jpg');
+      background-size: cover;
+      background-position: center;
+      transform: scale(5);
+
+      //@media screen and (min-width: 1920px) {
+      //  background-image: url('../assets/images/rsvp_2576w.jpg');
+      //}
+      //
+      //@media screen and (max-width: 1920px) {
+      //  background-image: url('../assets/images/rsvp_1920w.jpg');
+      //}
+      //
+      //@media screen and (max-width: 1440px) {
+      //  background-image: url('../assets/images/rsvp_1440w.jpg');
+      //}
+      //
+      //@media screen and (max-width: 960px) {
+      //  background-image: url('../assets/images/rsvp_960w.jpg');
+      //}
+    }
+  }
 }
 
 .logo-name {

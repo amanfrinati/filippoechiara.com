@@ -13,7 +13,6 @@ import './scripts/countdown'
 import './scripts/gaspAnimations'
 import './scripts/imageComparison'
 import RSVPForm from './scripts/components/RSVPForm.jsx'
-// import "./scripts/skewed";
 import './scripts/videoBackground'
 
 /**
