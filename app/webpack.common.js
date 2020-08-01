@@ -1,15 +1,15 @@
-const path = require("path");
-const CopyPlugin = require("copy-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const WebpackMd5Hash = require('webpack-md5-hash');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require('path')
+const CopyPlugin = require('copy-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const WebpackMd5Hash = require('webpack-md5-hash')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[chunkhash].js'
+    filename: '[name].[contenthash].js'
   },
   module: {
     rules: [
@@ -17,16 +17,14 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules)/,
         use: {
-          loader: 'babel-loader',
+          loader: 'babel-loader'
         }
       },
       {
         test: /\.(sa|sc|c)ss$/,
-        include: [
-          path.resolve(__dirname, 'src', 'styles')
-        ],
+        include: [path.resolve(__dirname, 'src', 'styles')],
         use: [
-          "style-loader",
+          'style-loader',
           {
             // After all CSS loaders we use plugin to do his work.
             // It gets all transformed CSS and extracts it into separate
@@ -35,17 +33,17 @@ module.exports = {
           },
           {
             // This loader resolves url() and @imports inside CSS
-            loader: "css-loader",
+            loader: 'css-loader'
           },
           {
             // Then we apply postCSS fixes like autoprefixer and minifying
-            loader: "postcss-loader"
+            loader: 'postcss-loader'
           },
           {
             // First we transform SASS to standard CSS
-            loader: "sass-loader",
+            loader: 'sass-loader',
             options: {
-              implementation: require("sass")
+              implementation: require('sass')
             }
           }
         ]
@@ -54,7 +52,7 @@ module.exports = {
         test: /\.html$/,
         use: [
           {
-            loader: "html-loader"
+            loader: 'html-loader'
           }
         ]
       },
@@ -64,7 +62,7 @@ module.exports = {
         use: [
           {
             // Using file-loader too
-            loader: "file-loader",
+            loader: 'file-loader',
             options: {
               outputPath: 'fonts'
             }
@@ -77,7 +75,7 @@ module.exports = {
         use: [
           {
             // Using file-loader too
-            loader: "file-loader",
+            loader: 'file-loader',
             options: {
               outputPath: 'videos'
             }
@@ -90,7 +88,7 @@ module.exports = {
         use: [
           {
             // Using file-loader for these files
-            loader: "file-loader",
+            loader: 'file-loader',
 
             // In options we can set different things like format
             // and directory to save
@@ -100,18 +98,18 @@ module.exports = {
           }
         ]
       }
-    ],
+    ]
   },
   plugins: [
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'style.[contenthash].css',
+      filename: 'style.[contenthash].css'
     }),
     new CopyPlugin({
       patterns: [
-        { from: "src/assets/icons", to: "icons" },
-        { from: "src/browserconfig.xml", to: "browserconfig.xml" },
-        { from: "src/site.webmanifest", to: "site.webmanifest" }
+        { from: 'src/assets/icons', to: 'icons' },
+        { from: 'src/browserconfig.xml', to: 'browserconfig.xml' },
+        { from: 'src/site.webmanifest', to: 'site.webmanifest' }
       ]
     }),
     new HtmlWebpackPlugin({
@@ -121,4 +119,4 @@ module.exports = {
     new WebpackMd5Hash(),
     require('autoprefixer')
   ]
-};
+}
