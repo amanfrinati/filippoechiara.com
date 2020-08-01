@@ -8,7 +8,7 @@ import 'bootstrap'
 import 'popper.js'
 import Swiper from 'swiper'
 
-import './scripts/annotateText'
+// import './scripts/annotateText'
 import './scripts/countdown'
 import './scripts/gaspAnimations'
 import './scripts/imageComparison'
