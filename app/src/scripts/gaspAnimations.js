@@ -4,17 +4,39 @@ import ScrollTrigger from 'gsap/dist/ScrollTrigger.min'
 
 gasp.registerPlugin(ScrollTrigger)
 
+const intro = gasp.timeline()
+intro
+  .to('.logo', {
+    width: 0,
+    duration: 1.5,
+    delay: 1
+    // ease: 'none'
+  })
+  .to('.logo-container', {
+    opacity: 0,
+    duration: 0.1
+  })
+  .to('.img-intro-container', {
+    opacity: 1,
+    duration: 0.1
+  })
+  .to('.intro-together', {
+    css: {
+      scaleX: 1,
+      scaleY: 1
+    },
+    duration: 3
+    // ease: 'none'
+  })
+// .to('.intro-together', {
+//   rotateY: 90,
+//   duration: 0.5
+//   // ease: 'none'
+// })
+intro.pause()
+
 $(document).ready(function () {
-  // gasp.to('.swiper-container-descriptions .swiper-button', {
-  //   color: 'white',
-  //   duration: 1,
-  //   scrollTrigger: {
-  //     trigger: '.swiper-container-descriptions .h1',
-  //     start: 'top center',
-  //     end: '+=1px',
-  //     scrub: true
-  //   },
-  // });
+  intro.play()
 
   gasp.to('.sticky-container .sticky-content .madonna-corona', {
     opacity: 1,
