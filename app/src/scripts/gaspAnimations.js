@@ -8,13 +8,13 @@ gsap.registerPlugin(ExpoScaleEase)
 
 const introAnimation = gsap.timeline()
 introAnimation
-  .to('.swiper-container.swiper-container-descriptions', {
-    opacity: 1,
-    duration: 0.5
-  })
+  // .to('.swiper-container.swiper-container-descriptions', {
+  //   opacity: 1,
+  //   duration: 0.5
+  // })
   .to('.img-intro-container', {
     opacity: 1,
-    duration: 0.5
+    duration: 0.2
   })
   .fromTo(
     '.intro-together',
