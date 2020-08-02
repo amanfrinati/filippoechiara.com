@@ -64,6 +64,7 @@ figure {
   .logo-stick-container {
     width: 100%;
     height: 200vh;
+    will-change: scale;
 
     .logo-stick-content {
       position: sticky;
@@ -74,6 +75,10 @@ figure {
       .logo {
         margin: auto;
         width: 50%;
+
+        @include media-breakpoint-up(md) {
+          width: 30%;
+        }
       }
     }
   }
@@ -115,19 +120,6 @@ figure {
   //    }
   //  }
   //}
-}
-
-.logo-container {
-  position: absolute;
-  top: 0;
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-
-  .logo {
-    margin: auto;
-    width: 50%;
-  }
 }
 
 .img-intro-container {
@@ -177,6 +169,23 @@ figure {
     font-size: 1.45rem;
     padding-bottom: 2rem;
     margin: 0;
+
+    &:last-child {
+      padding-bottom: 4rem;
+    }
+
+    @include media-breakpoint-up(sm) {
+      font-size: 1.8rem;
+    }
+
+    //@media screen and (min-width: 1920px) {
+    //  font-size
+    //  : ;
+    //}
+    //
+    //@media screen and (min-width: 1440px) {
+    //  font-size: ;
+    //}
   }
 
   & .swiper-container {
@@ -192,7 +201,9 @@ figure {
   }
 
   .sticky-container {
-    height: 420vh;
+    //height: 420vh;
+    height: 100%;
+    min-height: 100vh;
 
     .sticky-content {
       z-index: -1;
@@ -204,6 +215,10 @@ figure {
     height: calc(100% - 50px);
     background-repeat: no-repeat;
     background-size: cover;
+
+    @include media-breakpoint-up(sm) {
+      height: calc(100% - 55px);
+    }
 
     &.description-chiara-img {
       background-image: url('../assets/images/Chiara_description_p_2x.jpg');
@@ -219,6 +234,7 @@ figure {
       opacity: 0;
       background-position: center;
       transform: rotateY(270deg);
+      will-change: opacity, transform;
       background-image: url('../assets/images/Insieme_960w.jpg');
 
       @media screen and (min-width: 1920px) {
@@ -240,26 +256,29 @@ figure {
   .swiper-button-prev {
     color: white;
     opacity: 0;
+    will-change: opacity;
 
     &.swiper-button-disabled {
       display: none;
     }
   }
-
 }
 
 .swiper-pagination {
   opacity: 0;
-
-  .swiper-pagination-bullets {
-    bottom: 20px;
-  }
+  will-change: opacity;
 
   .swiper-pagination-bullet {
     width: 12px;
     height: 12px;
     border: solid 1px white;
     background-color: $blue;
+
+    @include media-breakpoint-up(sm) {
+      width: 18px;
+      height: 18px;
+      margin: 0 5px;
+    }
   }
 
   .swiper-pagination-bullet-active {
@@ -288,6 +307,10 @@ figure {
       letter-spacing: 4px;
       font-size: 1.45rem;
 
+      @include media-breakpoint-up(sm) {
+        font-size: 1.8rem;
+      }
+
       &:first-child {
         text-transform: uppercase;
       }
@@ -298,6 +321,7 @@ figure {
     background-image: url('../assets/images/quotes_p.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     opacity: 0;
     width: 100%;
     height: 100%;
@@ -659,6 +683,7 @@ figure {
 
   .sticky-content {
     background-color: $blue;
+    height: auto;
 
     .container {
       margin-top: 20vh;
