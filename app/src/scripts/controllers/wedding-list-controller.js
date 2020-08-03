@@ -1,7 +1,7 @@
 import { Controller } from 'stimulus'
-import firebase from '../../../firebase';
-import Swiper from "swiper";
-require("firebase/firestore");
+import firebase from '../../../firebase'
+import Swiper from 'swiper'
+require('firebase/firestore')
 
 export default class extends Controller {
   static targets = [
@@ -9,7 +9,7 @@ export default class extends Controller {
     'deNesList',
     'itemModalContent',
     'loading'
-  ];
+  ]
 
   swiperOptions = {
     // slidesPerView: 1,
@@ -35,60 +35,75 @@ export default class extends Controller {
       //   slidesPerView: 4,
       //   spaceBetween: 40,
       // },
-      // 1024: {
-      //   slidesPerView: 5,
-      //   spaceBetween: 50,
-      // },
+      1024: {
+        slidesPerView: 2,
+        spaceBetween: 5,
+        freeMode: false
+      }
     }
-  };
+  }
 
   connect() {
-    [this.vetrinettaListTarget.firstElementChild, this.deNesListTarget.firstElementChild]
-      .forEach(el => el.classList.toggle('d-none'));
+    ;[
+      this.vetrinettaListTarget.firstElementChild,
+      this.deNesListTarget.firstElementChild
+    ].forEach((el) => el.classList.toggle('d-none'))
 
-    this.swiperWeddingListVetrinetta = new Swiper(this.vetrinettaListTarget, this.swiperOptions);
-    this.swiperWeddingListDeNes = new Swiper(this.deNesListTarget, this.swiperOptions);
+    this.swiperWeddingListVetrinetta = new Swiper(
+      this.vetrinettaListTarget,
+      this.swiperOptions
+    )
+    this.swiperWeddingListDeNes = new Swiper(
+      this.deNesListTarget,
+      this.swiperOptions
+    )
 
-    this.db = firebase.firestore();
+    this.db = firebase.firestore()
     Promise.all([
-      [this.vetrinettaListTarget.firstElementChild,
+      [
+        this.vetrinettaListTarget.firstElementChild,
         this.deNesListTarget.firstElementChild,
-        ...this.loadingTargets],
-      this.db.collection("items").get()
-    ])
-      .then(data => {
-        const [ listTargets, querySnapshot ] = data
+        ...this.loadingTargets
+      ],
+      this.db.collection('items').get()
+    ]).then((data) => {
+      const [listTargets, querySnapshot] = data
 
-        /**
-         * Item model
-         *
-         * description
-         * imageSrc
-         * name
-         * paid
-         * totalAmount
-         * category: 1 == Vetrinetta, 2 == De Nes List
-         * type: 1 == Kitchen, 2 == Domestic appliances
-         */
-        this.weddingListItems = querySnapshot.docs.map(doc => ({ ...doc.data(), id: toCamelCase(doc.id) }));
-        this.weddingListItems
-          .sort((a, b) =>
-            a.name.localeCompare(b.name)
-          )
-          .forEach(item => {
-            switch (item.type) {
-              case 1: // Kitchen
-                this.swiperWeddingListVetrinetta.appendSlide(this.drawWeddingListItem(item));
-                break;
+      /**
+       * Item model
+       *
+       * description
+       * imageSrc
+       * name
+       * paid
+       * totalAmount
+       * category: 1 == Vetrinetta, 2 == De Nes List
+       * type: 1 == Kitchen, 2 == Domestic appliances
+       */
+      this.weddingListItems = querySnapshot.docs.map((doc) => ({
+        ...doc.data(),
+        id: toCamelCase(doc.id)
+      }))
+      this.weddingListItems
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .forEach((item) => {
+          switch (item.type) {
+            case 1: // Kitchen
+              this.swiperWeddingListVetrinetta.appendSlide(
+                this.drawWeddingListItem(item)
+              )
+              break
 
-              case 2: // Domestic appliances
-                this.swiperWeddingListDeNes.appendSlide(this.drawWeddingListItem(item));
-                break;
-            }
-          })
+            case 2: // Domestic appliances
+              this.swiperWeddingListDeNes.appendSlide(
+                this.drawWeddingListItem(item)
+              )
+              break
+          }
+        })
 
-          listTargets.forEach(el => el.classList.toggle('d-none'));
-      });
+      listTargets.forEach((el) => el.classList.toggle('d-none'))
+    })
   }
 
   /**
@@ -98,42 +113,59 @@ export default class extends Controller {
    * @returns {string}
    */
   drawWeddingListItem(item) {
-    const paymentCompleted = item.totalAmount - item.paid <= 0;
+    const paymentCompleted = item.totalAmount - item.paid <= 0
 
     return `
       <div class="swiper-slide swiper-slide-item">
-        <div class="card" data-item-id="${item.id}" ${paymentCompleted ? '' : 'data-action="click->wedding-list#showModal" data-toggle="modal" data-target="#item-modal"'}>
+        <div class="card" data-item-id="${item.id}" ${
+      paymentCompleted
+        ? ''
+        : 'data-action="click->wedding-list#showModal" data-toggle="modal" data-target="#item-modal"'
+    }>
           <div class="wedding-list-item-image">
-            <img src="${item.imageSrc || 'https://via.placeholder.com/400.png?text=Image'}" class="card-img-top swiper-lazy" alt="${item.name}">
+            <img src="${
+              item.imageSrc || 'https://via.placeholder.com/400.png?text=Image'
+            }" class="card-img-top swiper-lazy" alt="${item.name}">
           </div>
           <div class="card-body">
             <div class="wedding-list-item-title">
               <h6 class="text-center text-uppercase">${item.name}</h6>
             </div>
-            <p class="wedding-list-item-description">${truncateText(item.description || '', 26)}</p>
-            <div class="${paymentCompleted ? 'd-none' : 'wedding-list-item-price' }">
-              <p class="text-center"><strong>${item.paid}/${item.totalAmount} €</strong></p>
+            <p class="wedding-list-item-description">${truncateText(
+              item.description || '',
+              26
+            )}</p>
+            <div class="${
+              paymentCompleted ? 'd-none' : 'wedding-list-item-price'
+            }">
+              <p class="text-center"><strong>${item.paid}/${
+      item.totalAmount
+    } €</strong></p>
             </div>
-            <div class="${paymentCompleted ? '' : 'd-none' }">
+            <div class="${paymentCompleted ? '' : 'd-none'}">
               <div class="wedding-list-item-title wedding-list-item-completed">
                 <h6 class="text-center text-uppercase">REGALATO!</h6>
               </div>
             </div>
           </div>
         </div>
-      </div>`;
+      </div>`
   }
 
   drawModalContent(item) {
     let content = `
       <div class="item-name">${item.name}</div>
       <div class="item-img">
-        <img src="${item.imageSrc || 'https://via.placeholder.com/300.png?text=Image'}" alt="${item.name}">
+        <img src="${
+          item.imageSrc || 'https://via.placeholder.com/300.png?text=Image'
+        }" alt="${item.name}">
       </div>
-      <p class="item-price text-center"><strong>${item.paid}/${item.totalAmount} €</strong></p>
+      <p class="item-price text-center"><strong>${item.paid}/${
+      item.totalAmount
+    } €</strong></p>
       <p class="item-description"><em>${item.description}</em></p>
       <hr>
-    `;
+    `
 
     // 1 == Vetrinetta
     if (item.category === 1) {
@@ -145,9 +177,9 @@ export default class extends Controller {
         tel. <a href="tel:+390498700975">+390498700975</a><br>
         e-mail <a href="mailto:lavetrinetta@foralberg.it">lavetrinetta@foralberg.it</a><br>
         Lista nozze Bonaldo De Nes
-      </p>`;
+      </p>`
 
-    // 2 == De Nes List
+      // 2 == De Nes List
     } else if (item.category === 2) {
       content += `
       <p>Se desideri regalarci questo articolo, puoi contribuire attraverso bonifico seguendo queste coordinate:</p>
@@ -155,34 +187,38 @@ export default class extends Controller {
         Intestatario: Chiara Bonaldo<br>
         IBAN: IT09F0306962692100000007337<br>
         Causale: "${item.name} - Regalo di Nozze"
-      </p>`;
+      </p>`
     }
 
-    return content;
+    return content
   }
 
   showModal(event) {
-    event.preventDefault();
+    event.preventDefault()
     this.itemModalContentTarget.innerHTML = this.drawModalContent(
-      this.weddingListItems.find(item => item.id === event.currentTarget.dataset.itemId)
+      this.weddingListItems.find(
+        (item) => item.id === event.currentTarget.dataset.itemId
+      )
     )
   }
 
   closeItemModal() {
-    this.itemModalContentTarget.innerHTML = '';
+    this.itemModalContentTarget.innerHTML = ''
   }
 }
 
 function toCamelCase(string) {
-  string = string.toLowerCase().replace(/(?:(^.)|([-_\s]+.))/g, function(match) {
-    return match.charAt(match.length-1).toUpperCase();
-  });
-  return string.charAt(0).toLowerCase() + string.substring(1);
+  string = string
+    .toLowerCase()
+    .replace(/(?:(^.)|([-_\s]+.))/g, function (match) {
+      return match.charAt(match.length - 1).toUpperCase()
+    })
+  return string.charAt(0).toLowerCase() + string.substring(1)
 }
 
 function truncateText(text, maxWidth) {
   if (text.length > maxWidth) {
-    return text.substring(0, maxWidth) + '...';
+    return text.substring(0, maxWidth) + '...'
   }
-  return text;
+  return text
 }

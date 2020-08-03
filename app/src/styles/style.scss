@@ -134,15 +134,23 @@ figure {
     width: 100%;
     height: 100vh;
     background-repeat: no-repeat;
-    background-image: url('../assets/images/together_v.jpg');
+    background-image: url('../assets/images/filippo_chiara_separate_vertical_576w.jpg');
     background-size: cover;
     background-position: center;
     transform: scale(75);
 
-    //@media screen and (min-width: 1920px) {
-    //  background-image: url('../assets/images/rsvp_2576w.jpg');
-    //}
-    //
+    @media screen and (min-width: 3840px) {
+      background-image: url('../assets/images/filippo_chiara_separate_3840w.jpg');
+    }
+
+    @media screen and (min-width: 1920px) {
+      background-image: url('../assets/images/filippo_chiara_separate_1920w.jpg');
+    }
+
+    @include media-breakpoint-up(lg) {
+      background-image: url('../assets/images/filippo_chiara_separate_1200w.jpg');
+    }
+
     //@media screen and (max-width: 1920px) {
     //  background-image: url('../assets/images/rsvp_1920w.jpg');
     //}
@@ -201,9 +209,11 @@ figure {
   }
 
   .sticky-container {
-    //height: 420vh;
-    height: 100%;
-    min-height: 100vh;
+    height: 600vh;
+
+    @include media-breakpoint-up(sm) {
+      height: 420vh;
+    }
 
     .sticky-content {
       z-index: -1;
@@ -211,7 +221,7 @@ figure {
   }
 
   .description-img {
-    width: 100vw;
+    width: 100%;
     height: calc(100% - 50px);
     background-repeat: no-repeat;
     background-size: cover;
@@ -326,6 +336,10 @@ figure {
     width: 100%;
     height: 100%;
     will-change: opacity;
+
+    @media screen and (min-width: 1200px) {
+      background-image: url('../assets/images/quotes_l_1200.jpg');
+    }
   }
 }
 //
@@ -425,10 +439,10 @@ figure {
     }
 
     .eremitani-img {
-      background-image: url('../assets/images/foto_eremitani_4k.jpg');
+      background-image: url('../assets/images/foto_eremitani_960w.jpg');
       background-repeat: no-repeat;
       background-size: cover;
-      background-position: center top;
+      background-position: center;
       transform: scale(3);
       will-change: transform;
       height: 65vh;
@@ -439,6 +453,14 @@ figure {
 
       @media screen and (min-width: 500px) {
         height: 75vh;
+      }
+
+      @media screen and (min-width: 1200px) {
+        background-image: url('../assets/images/foto_eremitani_1200w.jpg');
+      }
+
+      @media screen and (min-width: 1620px) {
+        background-image: url('../assets/images/foto_eremitani_l_1620w.jpg');
       }
     }
   }
@@ -742,10 +764,22 @@ figure {
     background-repeat: no-repeat;
     background-image: url('../assets/images/foto_finale_p_2x.jpg');
     background-size: cover;
-    background-position: center top;
+    background-position: center;
     position: sticky;
     top: 0;
     margin: 0;
+
+    @media screen and (min-width: 1920px) {
+      background-image: url('../assets/images/foto_finale_1920w.jpg');
+    }
+
+    @media screen and (min-width: 1440px) {
+      background-image: url('../assets/images/foto_finale_1440w.jpg');
+    }
+
+    @media screen and (min-width: 992px) {
+      background-image: url('../assets/images/foto_finale_992w.jpg');
+    }
   }
 
   .content {

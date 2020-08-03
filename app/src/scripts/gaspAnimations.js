@@ -18,8 +18,8 @@ introAnimation
   })
   .fromTo(
     '.intro-together',
-    { scale: 50 },
-    { scale: 1, duration: 6, ease: 'expoScale(50, 1)' }
+    { scale: 75 },
+    { scale: 1, duration: 6, ease: 'expoScale(75, 1)' }
   )
   .to('.img-intro-container', {
     rotateY: 90,
