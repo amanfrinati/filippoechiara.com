@@ -186,6 +186,10 @@ figure {
       font-size: 1.8rem;
     }
 
+    @include media-breakpoint-up(lg) {
+      font-size: 1.45rem;
+    }
+
     //@media screen and (min-width: 1920px) {
     //  font-size
     //  : ;
@@ -205,6 +209,10 @@ figure {
 
     img {
       max-width: 70%;
+
+      @include media-breakpoint-up(lg) {
+        max-width: 50%;
+      }
     }
   }
 
@@ -231,13 +239,49 @@ figure {
     }
 
     &.description-chiara-img {
-      background-image: url('../assets/images/Chiara_description_p_2x.jpg');
-      opacity: 1;
+      background-image: url('../assets/images/Chiara_description_768w.jpg');
+
+      @include media-breakpoint-up(lg) {
+        background-image: url('../assets/images/Chiara_description_992w.jpg');
+        background-position: center;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 50vw;
+        height: calc(100vh - 50px);
+      }
+
+      @include media-breakpoint-up(xl) {
+        background-image: url('../assets/images/Chiara_description_1200w.jpg');
+        background-position: center;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 50vw;
+        height: calc(100vh - 50px);
+      }
     }
 
     &.description-filippo-img {
-      background-image: url('../assets/images/Filippo_description_p_2x.jpg');
-      opacity: 1;
+      background-image: url('../assets/images/Filippo_description_768w.jpg');
+
+      @include media-breakpoint-up(lg) {
+        background-image: url('../assets/images/Filippo_description_992w.jpg');
+        background-position: center;
+        position: fixed;
+        top: 0;
+        width: 50vw;
+        height: calc(100vh - 50px);
+      }
+
+      @include media-breakpoint-up(xl) {
+        background-image: url('../assets/images/Filippo_description_1200w.jpg');
+        background-position: center;
+        position: fixed;
+        top: 0;
+        width: 50vw;
+        height: calc(100vh - 50px);
+      }
     }
 
     &.description-together {
