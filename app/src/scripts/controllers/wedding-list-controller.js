@@ -11,6 +11,7 @@ export default class extends Controller {
     freeMode: true,
     // lazy: true,
     centeredSlides: true,
+    spaceBetween: 0,
     pagination: {
       el: '.swiper-pagination',
       dynamicBullets: true,
@@ -27,7 +28,22 @@ export default class extends Controller {
       // },
       768: {
         slidesPerView: 2,
-        spaceBetween: 0,
+        freeMode: false,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        }
+      },
+      1440: {
+        slidesPerView: 3,
+        freeMode: false,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        }
+      },
+      2300: {
+        slidesPerView: 4,
         freeMode: false,
         navigation: {
           nextEl: '.swiper-button-next',

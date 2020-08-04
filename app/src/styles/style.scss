@@ -267,6 +267,7 @@ figure {
     color: white;
     opacity: 0;
     will-change: opacity;
+    border: none;
 
     &.swiper-button-disabled {
       display: none;
@@ -556,8 +557,8 @@ figure {
 
     .swiper-button {
       &.swiper-button-next, &.swiper-button-prev {
-        color: $blue;
-        border: solid white 1px;
+        color: white;
+        border: none;
       }
     }
 
