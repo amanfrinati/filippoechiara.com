@@ -189,26 +189,17 @@ figure {
     @include media-breakpoint-up(lg) {
       font-size: 1.45rem;
     }
-
-    //@media screen and (min-width: 1920px) {
-    //  font-size
-    //  : ;
-    //}
-    //
-    //@media screen and (min-width: 1440px) {
-    //  font-size: ;
-    //}
-  }
-
-  & .swiper-container {
-    height: calc(100vh - 50px);
   }
 
   .swiper-slide {
-    height: unset;
+    height: calc(100vh - 50px);
 
     img {
       max-width: 70%;
+
+      @include media-breakpoint-up(md) {
+        max-width: 60%;
+      }
 
       @include media-breakpoint-up(lg) {
         max-width: 50%;
@@ -217,7 +208,7 @@ figure {
   }
 
   .sticky-container {
-    height: 600vh;
+    height: 700vh;
 
     @include media-breakpoint-up(sm) {
       height: 420vh;
@@ -230,13 +221,14 @@ figure {
 
   .description-img {
     width: 100%;
-    height: calc(100% - 50px);
+    height: 100%;
+    //height: calc(100% - 50px);
     background-repeat: no-repeat;
     background-size: cover;
 
-    @include media-breakpoint-up(sm) {
-      height: calc(100% - 55px);
-    }
+    //@include media-breakpoint-up(sm) {
+    //  height: calc(100% - 55px);
+    //}
 
     &.description-chiara-img {
       background-image: url('../assets/images/Chiara_description_768w.jpg');
@@ -329,7 +321,13 @@ figure {
     border: solid 1px white;
     background-color: $blue;
 
-    @include media-breakpoint-up(sm) {
+    @include media-breakpoint-up(md) {
+      width: 15px;
+      height: 15px;
+      margin: 0 5px;
+    }
+
+    @include media-breakpoint-up(xl) {
       width: 18px;
       height: 18px;
       margin: 0 5px;
