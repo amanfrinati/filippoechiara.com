@@ -543,9 +543,21 @@ figure {
       height: 500px;
       margin: 0 10vw;
       border: none;
+      cursor: pointer;
+
+      @include media-breakpoint-up(md) {
+        margin: 0 5vw;
+      }
 
       .card-body {
         padding-top: 0;
+      }
+    }
+
+    .swiper-button {
+      &.swiper-button-next, &.swiper-button-prev {
+        color: $blue;
+        border: solid white 1px;
       }
     }
 

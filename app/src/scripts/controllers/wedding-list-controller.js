@@ -4,22 +4,12 @@ import Swiper from 'swiper'
 require('firebase/firestore')
 
 export default class extends Controller {
-  static targets = [
-    'vetrinettaList',
-    'deNesList',
-    'itemModalContent',
-    'loading'
-  ]
+  static targets = ['swiperContainer', 'itemModalContent', 'loading']
 
   swiperOptions = {
-    // slidesPerView: 1,
     // loop: true,
     freeMode: true,
     // lazy: true,
-    // navigation: {
-    //   nextEl: '.swiper-button-next',
-    //   prevEl: '.swiper-button-prev',
-    // }
     centeredSlides: true,
     pagination: {
       el: '.swiper-pagination',
@@ -35,36 +25,31 @@ export default class extends Controller {
       //   slidesPerView: 4,
       //   spaceBetween: 40,
       // },
-      1024: {
+      768: {
         slidesPerView: 2,
-        spaceBetween: 5,
-        freeMode: false
+        spaceBetween: 0,
+        freeMode: false,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        }
       }
     }
   }
 
   connect() {
-    ;[
-      this.vetrinettaListTarget.firstElementChild,
-      this.deNesListTarget.firstElementChild
-    ].forEach((el) => el.classList.toggle('d-none'))
+    this.itemType = +this.data.get('itemType')
 
-    this.swiperWeddingListVetrinetta = new Swiper(
-      this.vetrinettaListTarget,
+    this.swiperWeddingList = new Swiper(
+      this.swiperContainerTarget,
       this.swiperOptions
     )
-    this.swiperWeddingListDeNes = new Swiper(
-      this.deNesListTarget,
-      this.swiperOptions
-    )
+
+    this.swiperContainerTarget.firstElementChild.classList.add('d-none')
 
     this.db = firebase.firestore()
     Promise.all([
-      [
-        this.vetrinettaListTarget.firstElementChild,
-        this.deNesListTarget.firstElementChild,
-        ...this.loadingTargets
-      ],
+      [this.swiperContainerTarget.firstElementChild, this.loadingTarget],
       this.db.collection('items').get()
     ]).then((data) => {
       const [listTargets, querySnapshot] = data
@@ -86,21 +71,10 @@ export default class extends Controller {
       }))
       this.weddingListItems
         .sort((a, b) => a.name.localeCompare(b.name))
-        .forEach((item) => {
-          switch (item.type) {
-            case 1: // Kitchen
-              this.swiperWeddingListVetrinetta.appendSlide(
-                this.drawWeddingListItem(item)
-              )
-              break
-
-            case 2: // Domestic appliances
-              this.swiperWeddingListDeNes.appendSlide(
-                this.drawWeddingListItem(item)
-              )
-              break
-          }
-        })
+        .filter((item) => item.type === this.itemType)
+        .forEach((item) =>
+          this.swiperWeddingList.appendSlide(this.drawWeddingListItem(item))
+        )
 
       listTargets.forEach((el) => el.classList.toggle('d-none'))
     })
@@ -117,10 +91,12 @@ export default class extends Controller {
 
     return `
       <div class="swiper-slide swiper-slide-item">
-        <div class="card" data-item-id="${item.id}" ${
+        <div class="card" data-item-id="${
+          item.id
+        }" data-item-data='${JSON.stringify(item)}' ${
       paymentCompleted
         ? ''
-        : 'data-action="click->wedding-list#showModal" data-toggle="modal" data-target="#item-modal"'
+        : 'data-action="click->wedding-list-item-modal#showModal" data-toggle="modal" data-target="#item-modal"'
     }>
           <div class="wedding-list-item-image">
             <img src="${
@@ -150,60 +126,6 @@ export default class extends Controller {
           </div>
         </div>
       </div>`
-  }
-
-  drawModalContent(item) {
-    let content = `
-      <div class="item-name">${item.name}</div>
-      <div class="item-img">
-        <img src="${
-          item.imageSrc || 'https://via.placeholder.com/300.png?text=Image'
-        }" alt="${item.name}">
-      </div>
-      <p class="item-price text-center"><strong>${item.paid}/${
-      item.totalAmount
-    } €</strong></p>
-      <p class="item-description"><em>${item.description}</em></p>
-      <hr>
-    `
-
-    // 1 == Vetrinetta
-    if (item.category === 1) {
-      content += `
-      <p>Se desideri regalarci questo articolo contatta o recati presso:</p>
-      <p class="contact-information">
-        "La Vetrinetta"<br>
-        Via Vigonovese, 93, 35127 Padova PD<br>
-        tel. <a href="tel:+390498700975">+390498700975</a><br>
-        e-mail <a href="mailto:lavetrinetta@foralberg.it">lavetrinetta@foralberg.it</a><br>
-        Lista nozze Bonaldo De Nes
-      </p>`
-
-      // 2 == De Nes List
-    } else if (item.category === 2) {
-      content += `
-      <p>Se desideri regalarci questo articolo, puoi contribuire attraverso bonifico seguendo queste coordinate:</p>
-      <p class="contact-information">
-        Intestatario: Chiara Bonaldo<br>
-        IBAN: IT09F0306962692100000007337<br>
-        Causale: "${item.name} - Regalo di Nozze"
-      </p>`
-    }
-
-    return content
-  }
-
-  showModal(event) {
-    event.preventDefault()
-    this.itemModalContentTarget.innerHTML = this.drawModalContent(
-      this.weddingListItems.find(
-        (item) => item.id === event.currentTarget.dataset.itemId
-      )
-    )
-  }
-
-  closeItemModal() {
-    this.itemModalContentTarget.innerHTML = ''
   }
 }
 

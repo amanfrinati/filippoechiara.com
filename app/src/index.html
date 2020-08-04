@@ -363,7 +363,7 @@
         </div>
       </section>
 
-      <section class="wedding-list" data-controller="wedding-list">
+      <section class="wedding-list" data-controller="wedding-list-item-modal">
         <div class="container my-5">
           <div class="row">
             <div class="col offset-md-2 col-md-8 offset-lg-3 col-lg-6">
@@ -381,47 +381,61 @@
         </div>
 
         <!-- Wedding list of presents from Vetrinetta -->
-        <div class="container mt-5 mb-3">
-          <div class="row">
-            <div class="col offset-md-2 col-md-8 offset-lg-3 col-lg-6">
-              <h3>Dreaming big</h3>
+        <div data-controller="wedding-list" data-wedding-list-item-type="1">
+          <div class="container mt-5 mb-3">
+            <div class="row">
+              <div class="col offset-md-2 col-md-8 offset-lg-3 col-lg-6">
+                <h3>Dreaming big</h3>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="d-flex justify-content-center">
-          <div
-            class="spinner-border my-5"
-            role="status"
-            data-target="wedding-list.loading"
-          >
-            <span class="sr-only">Loading...</span>
+          <div class="d-flex justify-content-center">
+            <div
+              class="spinner-border my-5"
+              role="status"
+              data-target="wedding-list.loading"
+            >
+              <span class="sr-only">Loading...</span>
+            </div>
           </div>
-        </div>
-        <div class="swiper-container" data-target="wedding-list.vetrinettaList">
-          <div class="swiper-wrapper"></div>
-          <div class="swiper-pagination"></div>
+          <div
+            class="swiper-container"
+            data-target="wedding-list.swiperContainer"
+          >
+            <div class="swiper-wrapper"></div>
+            <div class="swiper-button swiper-button-next"></div>
+            <div class="swiper-button swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+          </div>
         </div>
 
         <!-- Wedding list of presents from De Nes's list -->
-        <div class="container mt-5 mb-3">
-          <div class="row">
-            <div class="col offset-md-2 col-md-8 offset-lg-3 col-lg-6">
-              <h3>Dreaming bigger</h3>
+        <div data-controller="wedding-list" data-wedding-list-item-type="2">
+          <div class="container mt-5 mb-3">
+            <div class="row">
+              <div class="col offset-md-2 col-md-8 offset-lg-3 col-lg-6">
+                <h3>Dreaming bigger</h3>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="d-flex justify-content-center">
-          <div
-            class="spinner-border my-5"
-            role="status"
-            data-target="wedding-list.loading"
-          >
-            <span class="sr-only">Loading...</span>
+          <div class="d-flex justify-content-center">
+            <div
+              class="spinner-border my-5"
+              role="status"
+              data-target="wedding-list.loading"
+            >
+              <span class="sr-only">Loading...</span>
+            </div>
           </div>
-        </div>
-        <div class="swiper-container" data-target="wedding-list.deNesList">
-          <div class="swiper-wrapper"></div>
-          <div class="swiper-pagination"></div>
+          <div
+            class="swiper-container"
+            data-target="wedding-list.swiperContainer"
+          >
+            <div class="swiper-wrapper"></div>
+            <div class="swiper-button swiper-button-next"></div>
+            <div class="swiper-button swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+          </div>
         </div>
 
         <div
@@ -439,14 +453,14 @@
                   class="close"
                   data-dismiss="modal"
                   aria-label="Close"
-                  data-action="wedding-list#closeItemModal"
+                  data-action="wedding-list-item-modal#closeItemModal"
                 >
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div
                 class="modal-body"
-                data-target="wedding-list.itemModalContent"
+                data-target="wedding-list-item-modal.itemModalContent"
               ></div>
             </div>
           </div>
