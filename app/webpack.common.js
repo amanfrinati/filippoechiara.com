@@ -4,6 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WebpackMd5Hash = require('webpack-md5-hash')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const { GenerateSW } = require('workbox-webpack-plugin')
 
 module.exports = {
   entry: './src/index.js',
@@ -115,6 +116,20 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
       filename: 'index.html'
+    }),
+    new GenerateSW({
+      // these options encourage the ServiceWorkers to get in there fast
+      // and not allow any straggling "old" SWs to hang around
+      clientsClaim: true,
+      skipWaiting: true,
+      runtimeCaching: [
+        {
+          urlPattern: new RegExp(
+            'https://firebasestorage.googleapis.com/v0/b/wedding-list-e14d1.appspot.com'
+          ),
+          handler: 'StaleWhileRevalidate'
+        }
+      ]
     }),
     new WebpackMd5Hash(),
     require('autoprefixer')
