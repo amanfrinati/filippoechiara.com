@@ -1,0 +1,852 @@
+@import '~bootstrap';
+@import '~swiper/css/swiper.css';
+// @import "./skewed";
+//@import "./slider";
+
+@import 'fonts';
+@import 'imageComparison';
+@import 'variables';
+
+body {
+  font-family: $mada, sans-serif;
+  background-color: $blue;
+  color: white;
+}
+
+section {
+  min-height: 100vh;
+}
+
+h1 {
+  color: $blue;
+  letter-spacing: 2.4px;
+}
+
+h2 {
+  font-size: 3rem;
+  letter-spacing: 3px;
+}
+
+h3 {
+  font-size: 1.35rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+p {
+  line-height: 1.35;
+  font-size: 1.35rem;
+}
+
+figure {
+  margin: 0;
+}
+
+.sticky-container {
+  height: 275vh;
+  margin-top: -100vh;
+
+  .sticky-content {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+  }
+
+  .section-content {
+    padding-top: 40vh;
+  }
+}
+
+.logo-landing {
+  background-color: $blue;
+
+  .logo-stick-container {
+    width: 100%;
+    height: 200vh;
+    will-change: scale;
+
+    .logo-stick-content {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+
+      .logo {
+        margin: auto;
+        width: 50%;
+
+        @include media-breakpoint-up(md) {
+          width: 30%;
+        }
+      }
+    }
+  }
+
+  //.intro-together-sticky-container {
+  //  width: 100%;
+  //  height: 200vh;
+  //  overflow: hidden;
+  //
+  //  .intro-together-sticky-content {
+  //    position: sticky;
+  //    top: 0;
+  //
+  //    .intro-together {
+  //      width: 100%;
+  //      height: 100vh;
+  //      //margin-top: 100vh;
+  //      background-repeat: no-repeat;
+  //      background-image: url('../assets/images/together_v.jpg');
+  //      background-size: cover;
+  //      background-position: center;
+  //      transform: scale(3);
+  //
+  //      //@media screen and (min-width: 1920px) {
+  //      //  background-image: url('../assets/images/rsvp_2576w.jpg');
+  //      //}
+  //      //
+  //      //@media screen and (max-width: 1920px) {
+  //      //  background-image: url('../assets/images/rsvp_1920w.jpg');
+  //      //}
+  //      //
+  //      //@media screen and (max-width: 1440px) {
+  //      //  background-image: url('../assets/images/rsvp_1440w.jpg');
+  //      //}
+  //      //
+  //      //@media screen and (max-width: 960px) {
+  //      //  background-image: url('../assets/images/rsvp_960w.jpg');
+  //      //}
+  //    }
+  //  }
+  //}
+}
+
+.img-intro-container {
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  //overflow: hidden;
+  opacity: 0;
+
+  .intro-together {
+    width: 100%;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-image: url('../assets/images/filippo_chiara_separate_vertical_576w.jpg');
+    background-size: cover;
+    background-position: center;
+    transform: scale(75);
+
+    @media screen and (min-width: 3840px) {
+      background-image: url('../assets/images/filippo_chiara_separate_3840w.jpg');
+    }
+
+    @media screen and (min-width: 1920px) {
+      background-image: url('../assets/images/filippo_chiara_separate_1920w.jpg');
+    }
+
+    @include media-breakpoint-up(lg) {
+      background-image: url('../assets/images/filippo_chiara_separate_1200w.jpg');
+    }
+
+    //@media screen and (max-width: 1920px) {
+    //  background-image: url('../assets/images/rsvp_1920w.jpg');
+    //}
+    //
+    //@media screen and (max-width: 1440px) {
+    //  background-image: url('../assets/images/rsvp_1440w.jpg');
+    //}
+    //
+    //@media screen and (max-width: 960px) {
+    //  background-image: url('../assets/images/rsvp_960w.jpg');
+    //}
+  }
+}
+
+.logo-name {
+  padding: 2rem 0;
+}
+
+.swiper-container.swiper-container-descriptions {
+  height: 100vh;
+  //opacity: 0;
+
+  p {
+    font-size: 1.45rem;
+    padding-bottom: 2rem;
+    margin: 0;
+
+    &:last-child {
+      padding-bottom: 4rem;
+    }
+
+    @include media-breakpoint-up(sm) {
+      font-size: 1.8rem;
+    }
+
+    @include media-breakpoint-up(lg) {
+      font-size: 1.45rem;
+    }
+  }
+
+  .swiper-slide {
+    height: calc(100vh - 50px);
+
+    img {
+      max-width: 70%;
+
+      @include media-breakpoint-up(md) {
+        max-width: 60%;
+      }
+
+      @include media-breakpoint-up(lg) {
+        max-width: 50%;
+      }
+    }
+  }
+
+  .sticky-container {
+    height: 700vh;
+
+    @include media-breakpoint-up(sm) {
+      height: 420vh;
+    }
+
+    .sticky-content {
+      z-index: -1;
+    }
+  }
+
+  .description-img {
+    width: 100%;
+    height: 100%;
+    //height: calc(100% - 50px);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    //@include media-breakpoint-up(sm) {
+    //  height: calc(100% - 55px);
+    //}
+
+    &.description-chiara-img {
+      background-image: url('../assets/images/Chiara_description_768w.jpg');
+
+      @include media-breakpoint-up(lg) {
+        background-image: url('../assets/images/Chiara_description_992w.jpg');
+        background-position: center;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 50vw;
+        height: calc(100vh - 50px);
+      }
+
+      @include media-breakpoint-up(xl) {
+        background-image: url('../assets/images/Chiara_description_1200w.jpg');
+        background-position: center;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 50vw;
+        height: calc(100vh - 50px);
+      }
+    }
+
+    &.description-filippo-img {
+      background-image: url('../assets/images/Filippo_description_768w.jpg');
+
+      @include media-breakpoint-up(lg) {
+        background-image: url('../assets/images/Filippo_description_992w.jpg');
+        background-position: center;
+        position: fixed;
+        top: 0;
+        width: 50vw;
+        height: calc(100vh - 50px);
+      }
+
+      @include media-breakpoint-up(xl) {
+        background-image: url('../assets/images/Filippo_description_1200w.jpg');
+        background-position: center;
+        position: fixed;
+        top: 0;
+        width: 50vw;
+        height: calc(100vh - 50px);
+      }
+    }
+
+    &.description-together {
+      opacity: 0;
+      background-position: center;
+      transform: rotateY(270deg);
+      will-change: opacity, transform;
+      background-image: url('../assets/images/Insieme_960w.jpg');
+
+      @media screen and (min-width: 1920px) {
+        background-image: url('../assets/images/Insieme_1920w.jpg');
+      }
+
+      @media screen and (min-width: 1440px) {
+        background-image: url('../assets/images/Insieme_1440w.jpg');
+      }
+    }
+  }
+
+  .description-chiara-content,
+  .description-filippo-content {
+    background: linear-gradient(to bottom, $blue 25%, $blue 75%, transparent);
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: white;
+    opacity: 0;
+    will-change: opacity;
+    border: none;
+
+    &.swiper-button-disabled {
+      display: none;
+    }
+  }
+}
+
+.swiper-pagination {
+  opacity: 0;
+  will-change: opacity;
+
+  .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    border: solid 1px white;
+    background-color: $blue;
+
+    @include media-breakpoint-up(md) {
+      width: 15px;
+      height: 15px;
+      margin: 0 5px;
+    }
+
+    @include media-breakpoint-up(xl) {
+      width: 18px;
+      height: 18px;
+      margin: 0 5px;
+    }
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: white;
+  }
+
+  .swiper-pagination-bullet-active-prev,
+  .swiper-pagination-bullet-active-next {
+    background-color: white;
+    opacity: 0.9;
+  }
+
+  .swiper-pagination-bullet-active-prev-prev,
+  .swiper-pagination-bullet-active-next-next {
+    background-color: white;
+    opacity: 0.75;
+  }
+}
+
+.quotes {
+  min-height: unset;
+  height: 275vh;
+
+  .section-content {
+    p {
+      letter-spacing: 4px;
+      font-size: 1.45rem;
+
+      @include media-breakpoint-up(sm) {
+        font-size: 1.8rem;
+      }
+
+      &:first-child {
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .madonna-corona {
+    background-image: url('../assets/images/quotes_p.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    will-change: opacity;
+
+    @media screen and (min-width: 1200px) {
+      background-image: url('../assets/images/quotes_l_1200.jpg');
+    }
+  }
+}
+//
+//.fade-in {
+//  animation: fadein 1s cubic-bezier(0.4, 0, 1, 1);
+//}
+//
+//@keyframes fadein {
+//  from { opacity: 0; transform: translateY(50px); }
+//  to   { opacity: 1; transform: translateY(0); }
+//}
+
+.border-wrapper {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+
+  & [class*='border-'] {
+    background-color: #fff;
+    height: 102%;
+    position: absolute;
+    width: 45vw;
+    will-change: transform;
+  }
+
+  .border-right {
+    right: 0;
+    transform-origin: 100% 0;
+  }
+
+  .border-left {
+    left: 0;
+    transform-origin: 0 0;
+  }
+}
+
+.celebration,
+.motivational,
+.wedding-list {
+  b {
+    font-weight: 500;
+  }
+
+  strong {
+    font-weight: 700;
+  }
+
+  h1,
+  .h1 {
+    padding: 4rem 0;
+  }
+}
+
+// Celebration
+
+.celebration {
+  min-height: unset;
+  background-color: $gray-10;
+
+  p, span {
+    font-size: 1.55rem;
+    line-height: 1.35;
+
+    &.name {
+      font-size: 1.55rem;
+      line-height: 1.35;
+      letter-spacing: 3px;
+    }
+
+    &.ampersand {
+      font-family: $zapfinoExtraLTPro, sans-serif;
+      font-size: 3rem;
+    }
+  }
+
+  .chiara-and-filippo {
+    padding: 6rem 2rem;
+  }
+
+  .celebration-logo {
+    max-width: 70vw;
+    padding: 5rem 0;
+  }
+
+  .hero-cerimonia {
+    position: relative;
+    overflow: hidden;
+    background-color: $blue;
+
+    .border-left,
+    .border-right {
+      background-color: $gray-10;
+    }
+
+    .eremitani-img {
+      background-image: url('../assets/images/foto_eremitani_960w.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      transform: scale(3);
+      will-change: transform;
+      height: 65vh;
+
+      @media screen and (min-width: 450px) {
+        height: 70vh;
+      }
+
+      @media screen and (min-width: 500px) {
+        height: 75vh;
+      }
+
+      @media screen and (min-width: 1200px) {
+        background-image: url('../assets/images/foto_eremitani_1200w.jpg');
+      }
+
+      @media screen and (min-width: 1620px) {
+        background-image: url('../assets/images/foto_eremitani_l_1620w.jpg');
+      }
+    }
+  }
+
+  #save-the-date,
+  .save-the-date p {
+    padding: 3rem 0;
+    text-align: center;
+    font-size: 2rem;
+    line-height: 2;
+  }
+}
+
+#countdown-container {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 2.4px;
+  background-color: $blue;
+
+  .date-naming {
+    font-weight: 300;
+    font-size: 1.1rem;
+  }
+}
+
+// Party
+
+.party {
+  height: 200vh;
+
+  .video-container {
+    position: sticky;
+    overflow: hidden;
+    min-width: 100%;
+    height: 100vh;
+    top: 0;
+
+    video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -1;
+      transform: translateX(-50%) translateY(-50%);
+      background-size: cover;
+      transition: 1s opacity;
+    }
+
+    .video-bg {
+      background-color: $blue;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      width: 100vw;
+      height: 100%;
+    }
+  }
+
+  .video-text-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+// Wedding List
+
+.wedding-list {
+  min-height: unset;
+  padding: 5rem 0;
+
+  .swiper-container {
+    width: 100%;
+    height: 550px;
+
+    .swiper-slide-item .card {
+      height: 500px;
+      margin: 0 10vw;
+      border: none;
+      cursor: pointer;
+
+      @include media-breakpoint-up(md) {
+        margin: 0 5vw;
+      }
+
+      .card-body {
+        padding-top: 0;
+      }
+    }
+
+    .swiper-button {
+      &.swiper-button-next, &.swiper-button-prev {
+        color: white;
+        border: none;
+      }
+    }
+
+    .wedding-list-item-image {
+      position: relative;
+      width: 100%;
+      height: 300px;
+
+      img {
+        width: 100%;
+        object-fit: scale-down;
+        height: 300px;
+        padding: 0.5rem 1.25rem;
+      }
+    }
+
+    .wedding-list-item-price {
+      color: $blue;
+      display: flex;
+      flex-direction: column;
+
+      p {
+        font-size: 1.4rem;
+        margin: 0.5rem 0;
+      }
+    }
+
+    .wedding-list-item-title {
+      background-color: white;
+      color: $blue;
+      height: 75px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0.25rem;
+      border: #20244d solid 2px;
+
+      h6 {
+        font-size: 1.4rem;
+        letter-spacing: 3px;
+        font-weight: 700;
+        margin: 0;
+      }
+
+      &.wedding-list-item-completed {
+        //background-color: $gray-10;
+        background-color: white;
+        border: none;
+        color: $blue;
+        height: auto;
+        padding: 0.25rem;
+      }
+    }
+
+    .wedding-list-item-description {
+      font-weight: 300;
+      color: $blue;
+      text-align: center;
+      margin: 1rem 0;
+    }
+  }
+}
+
+.wedding-list-modal {
+  color: $blue;
+
+  .item-name {
+    background-color: $blue;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 1.4rem;
+    letter-spacing: 3px;
+  }
+
+  .item-img {
+    height: 300px;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+
+    img {
+      object-fit: scale-down;
+      width: 100%;
+    }
+  }
+
+  .item-price {
+    font-size: 1.4rem;
+    margin: 0.5rem 0;
+  }
+
+  .contact-information {
+    margin: 1rem 0;
+    text-align: center;
+    line-height: 1.75;
+  }
+}
+
+// Honey moon
+
+.honey-moon {
+  min-height: unset;
+  padding: 5rem 0;
+
+  h2 {
+    font-size: 2.5rem;
+  }
+}
+
+// RSVP
+
+.rsvp-section {
+  position: relative;
+}
+
+.rsvp-hero-section.sticky-container {
+  position: relative;
+  z-index: 2;
+  margin-top: 0;
+  height: 110vh;
+}
+
+.rsvp-hero {
+  width: 100%;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-image: url('../assets/images/rsvp_1920w.jpg');
+  background-size: cover;
+  background-position: center top;
+
+  @media screen and (min-width: 1920px) {
+    background-image: url('../assets/images/rsvp_2576w.jpg');
+  }
+
+  @media screen and (max-width: 1920px) {
+    background-image: url('../assets/images/rsvp_1920w.jpg');
+  }
+
+  @media screen and (max-width: 1440px) {
+    background-image: url('../assets/images/rsvp_1440w.jpg');
+  }
+
+  @media screen and (max-width: 960px) {
+    background-image: url('../assets/images/rsvp_960w.jpg');
+  }
+}
+
+.rsvp-section-form.sticky-container {
+  position: relative;
+  margin-top: -85vh;
+  height: 150vh;
+  min-height: calc(100vh + 900px);
+  z-index: 1;
+
+  .sticky-content {
+    background-color: $blue;
+    height: auto;
+
+    .container {
+      margin-top: 20vh;
+    }
+  }
+}
+
+.rsvp {
+  font-size: 1.35rem;
+
+  .form-control {
+    border: solid white 2px;
+    border-radius: 0;
+    background: transparent;
+    color: white;
+    font-size: 1.35rem;
+  }
+
+  //input[type='text'],
+  //textarea {
+  //  &::placeholder {
+  //    color: white;
+  //  }
+  //}
+
+  textarea {
+    font-style: italic;
+  }
+
+  button[type='submit'] {
+    border-radius: 0;
+    font-size: 1.35rem;
+    border: solid white 2px;
+    background-color: $blue;
+
+    &:hover {
+      color: $blue;
+      background-color: white;
+    }
+  }
+
+  select option {
+    color: $blue;
+  }
+}
+
+// Final Section
+
+.final-section {
+  min-height: unset;
+  height: 140vh;
+
+  .final-section-hero {
+    width: 100%;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-image: url('../assets/images/foto_finale_p_2x.jpg');
+    background-size: cover;
+    background-position: center;
+    position: sticky;
+    top: 0;
+    margin: 0;
+
+    @media screen and (min-width: 1920px) {
+      background-image: url('../assets/images/foto_finale_1920w.jpg');
+    }
+
+    @media screen and (min-width: 1440px) {
+      background-image: url('../assets/images/foto_finale_1440w.jpg');
+    }
+
+    @media screen and (min-width: 992px) {
+      background-image: url('../assets/images/foto_finale_992w.jpg');
+    }
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+
+    .phrase {
+      opacity: 0;
+      font-size: 1.35rem;
+      line-height: 4px;
+      color: white;
+      font-weight: 500;
+    }
+  }
+}
